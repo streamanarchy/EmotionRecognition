@@ -69,3 +69,13 @@ class Ui_Dialog(object):
         self.segButton.setText(_translate("Dialog", "Segmentation", None))
         self.rollButton.setText(_translate("Dialog", "Rolloff", None))
 
+
+class voiceUI(QtGui.QMainWindow):
+    def __init__(self):
+        QtGui.QWidget.__init__(self,None)
+        self.ui = Ui_Dialog()
+        self.ui.setupUi(self)
+        self.ui.closeButton.clicked.connect(self.closeButton)
+
+    def closeButton(self):
+        self.close()

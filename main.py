@@ -7,6 +7,10 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt4 import QtCore, QtGui
+from speech import speechUI
+import sys
+from features import voiceUI
+import allFunction as aF
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -44,4 +48,33 @@ class Ui_Dialog(object):
         self.speechButton.setText(_translate("Dialog", "Speech Recognition", None))
         self.voiceButton.setText(_translate("Dialog", "Voice Features", None))
         self.pushButton_2.setText(_translate("Dialog", "Emotion Recognition", None))
+
+
+class mainDialog(QtGui.QMainWindow):
+    def __init__(self):
+        QtGui.QMainWindow.__init__(self,None)
+        self.ui = Ui_Dialog()
+        self.ui.setupUi(self)
+        self.ui.speechButton.clicked.connect(self.speechDialog)
+        self.ui.voiceButton.clicked.connect(self.voiceDialog)
+
+    def speechDialog(self):
+        print "speechDialog"
+        self.speechDialogUI = speechUI()
+        self.speechDialogUI.show()
+        self.speechDialogUI.raise_()
+        aF.speechRecognition(self.speechDialogUI)
+
+
+    def voiceDialog(self):
+        self.voiceDialogUI = voiceUI()
+        self.voiceDialogUI.show()
+        self.voiceDialogUI.raise_()
+
+
+if __name__ =="__main__":
+    app = QtGui.QApplication(sys.argv)
+    view = mainDialog()
+    view.show()
+    sys.exit(app.exec_())
 

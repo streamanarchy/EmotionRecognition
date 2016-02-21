@@ -19,6 +19,7 @@ eps = 0.00000001
 lowcut = 0
 highcut =0
 
+
 def butter_bandpass(lowcut, highcut, Fs, order):
 	#nyq = 0.5 * Fs
 	#low = lowcut / nyq
@@ -82,14 +83,16 @@ def recordAudioSegments(RecordPath, Bs):	#Bs: BlockSize
 
 def googleRecognition(recognizer, audio):
 	try:
-		print("Voice:" + recognizer.recognize_google(audio))
+		speechGUI.ui.speechText.append(recognizer.recognize_google(audio))
 	except sr.UnknownValueError:
 	        print("Google Speech Recognition could not understand audio")
 	except sr.RequestError as e:
 	        print("Could not request results from Google Speech Recognition service; {0}".format(e))
 
 
-def speechRecognition():
+def speechRecognition(GUI):
+	global speechGUI
+	speechGUI = GUI
 	r = sr.Recognizer()
 	m = sr.Microphone()
 	with m as source:
@@ -479,7 +482,6 @@ def plotSegments(x, Fs, segmentLimits, ProbOnset):
 if __name__ == "__main__":
 	count = 1
 	fileList = glob.glob("/home/project/Documents/Project/training/wav/*.wav")
-	r = RBM(num_visible=21, num_hidden=6)	
 	for trainWav in fileList:
 		l,x = wavfile.read(trainWav)
 		#limits = svmSegmentation(x,Fs,0.02,0.02)
@@ -508,7 +510,6 @@ if __name__ == "__main__":
 		if count == 300:
 			break
 		#print "features:",features.shape
-
 
 
 

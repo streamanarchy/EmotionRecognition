@@ -40,3 +40,14 @@ class Ui_Dialog(object):
         Dialog.setWindowTitle(_translate("Dialog", "Dialog", None))
         self.closeButton.setText(_translate("Dialog", "Close", None))
 
+
+class speechUI(QtGui.QMainWindow):
+    def __init__(self):
+        QtGui.QWidget.__init__(self,None)
+        self.ui = Ui_Dialog()
+        self.ui.setupUi(self)
+        self.ui.closeButton.clicked.connect(self.closeButton)
+
+    def closeButton(self):
+        self.close()
+
