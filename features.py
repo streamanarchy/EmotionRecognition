@@ -7,6 +7,7 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt4 import QtCore, QtGui
+import allFunction as aF
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -76,6 +77,17 @@ class voiceUI(QtGui.QMainWindow):
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
         self.ui.closeButton.clicked.connect(self.closeButton)
+        """self.ui.zcrButton.clicked.connect(self.zcrButton)
+        self.ui.energyButton.clicked.connect(self.energyButton)
+        self.ui.energyEtButton.clicked.connect(self.energyEtButton)
+        self.ui.centroidButton.clicked.connect(self.centroidButton)
+        self.ui.fluxButton.clicked.connect(self.fluxButton)
+        self.ui.spreadButton.clicked.connect(self.spreadButton)
+        self.ui.rollButton.clicked.connect(self.rollButton)"""
+        self.ui.segButton.clicked.connect(self.segButton)
 
     def closeButton(self):
         self.close()
+
+    def segButton(self):
+        aF.recordAudioSegments('/home/project/Documents/Project/input/wav/',8,'seg')

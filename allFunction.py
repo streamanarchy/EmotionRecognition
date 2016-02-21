@@ -28,7 +28,7 @@ def butter_bandpass(lowcut, highcut, Fs, order):
 	return filtb, filta
 
 
-def recordAudioSegments(RecordPath, Bs):	#Bs: BlockSize	
+def recordAudioSegments(RecordPath, Bs, plot):	#Bs: BlockSize
 	RecordPath += os.sep
 	d = os.path.dirname(RecordPath)
 	if os.path.exists(d) and RecordPath!=".":
@@ -73,10 +73,12 @@ def recordAudioSegments(RecordPath, Bs):	#Bs: BlockSize
 			#TODO FeatureExtraction call to segmentation
 			#TODO Add call to segment voice i.e. svmSegmentation function
 			#adaptfilt.lms()
-
-			svmSegmentation(midTermBufferArray,Fs,0.02,0.02)
-
-			FeatureExtraction(midTermBufferArray,Fs,16000,16000)
+			segmentLimits,ProbOnset = svmSegmentation(midTermBufferArray,Fs,0.02,0.02,False)
+			if plot == 'seg':
+				plotSegments(midTermBufferArray,Fs,segmentLimits,ProbOnset)
+			Features = FeatureExtraction(midTermBufferArray,Fs,16000,16000)
+			if plot == 'energy':
+				plotEnergy(Features[1])
 			#print "AUDIO  OUTPUT: Saved " + curWavFileName
 			midTermBuffer = []
 			elapsedTime = "%08.3f" % (time.time())
@@ -387,7 +389,7 @@ def energyExtraction(x,Fs,Win, Step):
 
 	return energyFeatures
 	
-def svmSegmentation(x, Fs, window, steps):
+def svmSegmentation(x, Fs, window, steps, plot=True):
 	smoothWindow=1
 	Weight=0.3
 	#TODO Step 1: feature extraction
@@ -456,9 +458,10 @@ def svmSegmentation(x, Fs, window, steps):
 		if s[1] - s[0] > minDuration:
 			segmentLimits2.append(s)
 	segmentLimits = segmentLimits2"""
-	#plotSegments(x, Fs, segmentLimits, ProbOnset)
-	print "Segmentation;",segmentLimits
-	return segmentLimits
+	if plot==True:
+		plotSegments(x, Fs, segmentLimits, ProbOnset)
+	#print "Segmentation;",segmentLimits
+	return segmentLimits,ProbOnset
 
 def plotSegments(x, Fs, segmentLimits, ProbOnset):
 	steps = 0.02
@@ -477,8 +480,12 @@ def plotSegments(x, Fs, segmentLimits, ProbOnset):
 		plt.axvline(x=s[1])
 	plt.title('SVM Probability')
 	plt.show()
-
 	return
+
+def plotEnergy():
+	return
+
+
 if __name__ == "__main__":
 	count = 1
 	fileList = glob.glob("/home/project/Documents/Project/training/wav/*.wav")
