@@ -13,6 +13,8 @@ from scipy.signal import butter
 from scipy.signal import filtfilt
 import glob
 import speech_recognition as sr
+from nn import trainer
+from nn import neuralNet
 #from scikits.talkbox.features import mfcc as MFCC
 Fs = 16000
 eps = 0.00000001
@@ -29,11 +31,11 @@ def butter_bandpass(lowcut, highcut, Fs, order):
 
 
 def recordAudioSegments(RecordPath, Bs, plot):	#Bs: BlockSize
-	RecordPath += os.sep
+	"""RecordPath += os.sep
 	d = os.path.dirname(RecordPath)
 	if os.path.exists(d) and RecordPath!=".":
 		shutil.rmtree(RecordPath)
-	os.makedirs(RecordPath)
+	os.makedirs(RecordPath)"""
 
 	inp = alsaaudio.PCM(alsaaudio.PCM_CAPTURE,alsaaudio.PCM_NONBLOCK)
 	inp.setchannels(1)
@@ -63,19 +65,20 @@ def recordAudioSegments(RecordPath, Bs, plot):	#Bs: BlockSize
 
 		if len(midTermBuffer) == midTermBufferSize:
 			# allData = allData + midTermBuffer
-			curWavFileName = RecordPath + os.sep + str(elapsedTime) + ".wav"
+			#curWavFileName = RecordPath + os.sep + str(elapsedTime) + ".wav"
 			#print midTermBuffer.__class__
 			midTermBufferArray = numpy.int16(midTermBuffer)
 			#TODO Noise Filtering
-			filtb, filta = butter_bandpass(lowcut,highcut,Fs,8)
-			midTermBufferArray = filtfilt(filtb , filta , midTermBufferArray)
-			wavfile.write(curWavFileName, Fs, midTermBufferArray)
+			#filtb, filta = butter_bandpass(lowcut,highcut,Fs,8)
+			#midTermBufferArray = filtfilt(filtb , filta , midTermBufferArray)
+			#wavfile.write(curWavFileName, Fs, midTermBufferArray)
 			#TODO FeatureExtraction call to segmentation
 			#TODO Add call to segment voice i.e. svmSegmentation function
 			#adaptfilt.lms()
 			segmentLimits,ProbOnset = svmSegmentation(midTermBufferArray,Fs,0.02,0.02,False)
 			if plot == 'seg':
 				plotSegments(midTermBufferArray,Fs,segmentLimits,ProbOnset)
+				break
 			Features = FeatureExtraction(midTermBufferArray,Fs,16000,16000)
 			if plot == 'energy':
 				plotEnergy(Features[1])
@@ -323,7 +326,7 @@ def normalizeFeatures(features):
 			else:
 				#if X.__len__() == 0 :
 				#	X=f
-				print "Vstack dimension",X.shape,f.shape
+				#print "Vstack dimension",X.shape,f.shape
 				X = numpy.vstack((X, f))
 		count += 1
 
@@ -489,16 +492,13 @@ def plotEnergy():
 if __name__ == "__main__":
 	count = 1
 	fileList = glob.glob("/home/project/Documents/Project/training/wav/*.wav")
+	neuralNetwork = neuralNet()
+	emoTrainer = trainer(neuralNetwork)
 	for trainWav in fileList:
 		l,x = wavfile.read(trainWav)
-		#limits = svmSegmentation(x,Fs,0.02,0.02)
 		features = FeatureExtraction(x,Fs,16000,16000)
-	
-	for testWav in fileList:
-		l,x = wavfile.read(testWav)
-		features = FeatureExtraction(x,Fs,16000,16000)
-		raw_input(testWav[-6])
-		result = testWav[-6]
+		result = trainWav[-6]
+		print result
 		if result == 'F':
 			y = [1,0,0,0,0,0,0]
 		elif result =='W':
@@ -513,9 +513,22 @@ if __name__ == "__main__":
 			y = [0,0,0,0,0,1,0]
 		elif result =='N':
 			y = [0,0,0,0,0,0,1]
-		count = count+1
-		if count == 300:
-			break
+
+		"""Y = []
+		for i in xrange(0,features.shape[1]):
+			Y.append(y)"""
+		#Y = numpy.array(Y).T
+		features = features.T.tolist()
+		for frameFeatures in features:
+			emoTrainer.train(frameFeatures,y)
+
+	for trainWav in fileList:
+		l,x = wavfile.read(trainWav)
+		features = FeatureExtraction(x,Fs,16000,16000)
+		print trainWav[-6]
+		y = neuralNetwork.forward(features)
+		print y
+
 		#print "features:",features.shape
 
 

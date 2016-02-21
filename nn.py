@@ -18,16 +18,19 @@ class neuralNet(object):
 
 	def sigmoid(self,dataVector):
 		return 1/(1+np.exp(-dataVector))
-	def sigmoidDerivate(self,dataVector):
+	def sigmoidPrime(self,dataVector):
 		return np.exp(-dataVector)/((1+np.exp(-dataVector))**2)
 	def costFunction(self, X, y):
 		self.yHat = self.forward(X)
 		J = 0.5*sum((y-self.yHat)**2)
+		print J
 		return J
 	def costFunctionPrime(self, X, y):
 		self.yHat = self.forward(X)
-
+		print self.yHat
 		delta3 = np.multiply(-(y-self.yHat), self.sigmoidPrime(self.z3))
+		print delta3,"THE GAP",self.a2
+		
 		dJdW2 = np.dot(self.a2.T, delta3)
 
 		delta2 = np.dot(delta3, self.W2.T)*self.sigmoidPrime(self.z2)
@@ -49,7 +52,7 @@ class neuralNet(object):
 		dJdW1, dJdW2 = self.costFunctionPrime(X, y)
 		return np.concatenate((dJdW1.ravel(), dJdW2.ravel()))
 
-	def computeNumericalGradient(N, X, y):
+	"""def computeNumericalGradient(N, X, y):
 		paramsInitial = N.getParams()
 		numgrad = np.zeros(paramsInitial.shape)
 		perturb = np.zeros(paramsInitial.shape)
@@ -67,14 +70,12 @@ class neuralNet(object):
 
 		N.setParams(paramsInitial)
 
-		return numgrad
+		return numgrad"""
 
 
 class trainer(object):
 	def __init__(self, N):
 		self.N = N
-
-
 
 	def callbackF(self, params):
 		self.N.setParams(params)
