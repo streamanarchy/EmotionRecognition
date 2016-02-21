@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'main.ui'
+# Form implementation generated from reading ui file 'speech.ui'
 #
 # Created by: PyQt4 UI code generator 4.11.4
 #
@@ -26,22 +26,17 @@ class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName(_fromUtf8("Dialog"))
         Dialog.resize(400, 300)
-        self.speechButton = QtGui.QPushButton(Dialog)
-        self.speechButton.setGeometry(QtCore.QRect(10, 40, 161, 41))
-        self.speechButton.setObjectName(_fromUtf8("speechButton"))
-        self.voiceButton = QtGui.QPushButton(Dialog)
-        self.voiceButton.setGeometry(QtCore.QRect(210, 40, 161, 41))
-        self.voiceButton.setObjectName(_fromUtf8("voiceButton"))
-        self.pushButton_2 = QtGui.QPushButton(Dialog)
-        self.pushButton_2.setGeometry(QtCore.QRect(110, 150, 161, 41))
-        self.pushButton_2.setObjectName(_fromUtf8("pushButton_2"))
+        self.speechText = QtGui.QTextBrowser(Dialog)
+        self.speechText.setGeometry(QtCore.QRect(20, 30, 256, 192))
+        self.speechText.setObjectName(_fromUtf8("speechText"))
+        self.closeButton = QtGui.QPushButton(Dialog)
+        self.closeButton.setGeometry(QtCore.QRect(300, 260, 88, 27))
+        self.closeButton.setObjectName(_fromUtf8("closeButton"))
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(_translate("Dialog", "Dialog", None))
-        self.speechButton.setText(_translate("Dialog", "Speech Recognition", None))
-        self.voiceButton.setText(_translate("Dialog", "Voice Features", None))
-        self.pushButton_2.setText(_translate("Dialog", "Emotion Recognition", None))
+        self.closeButton.setText(_translate("Dialog", "Close", None))
 
