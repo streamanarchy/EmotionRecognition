@@ -10,8 +10,8 @@ from PyQt4 import QtCore, QtGui
 from speech import speechUI
 import sys
 from features import voiceUI
+from emotion import emotionUI
 import allFunction as aF
-
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
 except AttributeError:
@@ -57,6 +57,13 @@ class mainDialog(QtGui.QMainWindow):
         self.ui.setupUi(self)
         self.ui.speechButton.clicked.connect(self.speechDialog)
         self.ui.voiceButton.clicked.connect(self.voiceDialog)
+        self.ui.pushButton_2.clicked.connect(self.emotionDialog)
+
+    def emotionDialog(self):
+        self.emotionDialogUI = emotionUI()
+        self.emotionDialogUI.show()
+        self.emotionDialogUI.raise_()
+        aF.call(self.emotionDialogUI)
 
     def speechDialog(self):
         print "speechDialog"

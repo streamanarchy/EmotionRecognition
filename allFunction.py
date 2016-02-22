@@ -16,12 +16,21 @@ import glob
 import speech_recognition as sr
 from nn import trainer
 from nn import neuralNet
+import thread
 #from scikits.talkbox.features import mfcc as MFCC
+from PyQt4 import QtCore, QtGui
 Fs = 16000
 eps = 0.00000001
 lowcut = 0
 highcut =0
 
+
+def call(GUI1):
+	thread.start_new_thread(recordAudioSegments,('/home/project/Documents/Project/input/wav/',6,GUI1))
+	thread.start_new_thread(speechRecognition,())
+
+	while 1:
+		pass
 
 def butter_bandpass(lowcut, highcut, Fs, order):
 	#nyq = 0.5 * Fs
@@ -31,12 +40,15 @@ def butter_bandpass(lowcut, highcut, Fs, order):
 	return filtb, filta
 
 
-def recordAudioSegments(RecordPath, Bs, plot):	#Bs: BlockSize
+def recordAudioSegments(RecordPath, Bs, gui,plot=False):	#Bs: BlockSize
 	"""RecordPath += os.sep
 	d = os.path.dirname(RecordPath)
 	if os.path.exists(d) and RecordPath!=".":
 		shutil.rmtree(RecordPath)
 	os.makedirs(RecordPath)"""
+
+	global emotionGUI
+	emotionGUI = gui
 
 	inp = alsaaudio.PCM(alsaaudio.PCM_CAPTURE,alsaaudio.PCM_NONBLOCK)
 	inp.setchannels(1)
@@ -60,15 +72,16 @@ def recordAudioSegments(RecordPath, Bs, plot):	#Bs: BlockSize
 			else:
 				samplesToCopyToMidBuffer = len(curWindow)
 
-			midTermBuffer = midTermBuffer + curWindow[0:samplesToCopyToMidBuffer];
+			midTermBuffer = midTermBuffer + curWindow[0:samplesToCopyToMidBuffer]
 			del(curWindow[0:samplesToCopyToMidBuffer])
 
 
 		if len(midTermBuffer) == midTermBufferSize:
+			midTermBufferArray = numpy.int16(midTermBuffer)
 			# allData = allData + midTermBuffer
 			#curWavFileName = RecordPath + os.sep + str(elapsedTime) + ".wav"
 			#print midTermBuffer.__class__
-			midTermBufferArray = numpy.int16(midTermBuffer)
+
 			#TODO Noise Filtering
 			#filtb, filta = butter_bandpass(lowcut,highcut,Fs,8)
 			#midTermBufferArray = filtfilt(filtb , filta , midTermBufferArray)
@@ -81,6 +94,7 @@ def recordAudioSegments(RecordPath, Bs, plot):	#Bs: BlockSize
 				plotSegments(midTermBufferArray,Fs,segmentLimits,ProbOnset)
 				break
 			Features = FeatureExtraction(midTermBufferArray,Fs,16000,16000)
+			gui.ui.featureText.append("here")
 			if plot == 'energy':
 				plotEnergy(Features[1])
 			#print "AUDIO  OUTPUT: Saved " + curWavFileName
@@ -88,17 +102,25 @@ def recordAudioSegments(RecordPath, Bs, plot):	#Bs: BlockSize
 			elapsedTime = "%08.3f" % (time.time())
 
 def googleRecognition(recognizer, audio):
-	try:
-		speechGUI.ui.speechText.append(recognizer.recognize_google(audio))
-	except sr.UnknownValueError:
-	        print("Google Speech Recognition could not understand audio")
-	except sr.RequestError as e:
-	        print("Could not request results from Google Speech Recognition service; {0}".format(e))
+	if gui == None:
+		try:
+			print(recognizer.recognize_google(audio))
+		except sr.UnknownValueError:
+			print("Google Speech Recognition could not understand audio")
+		except sr.RequestError as e:
+			print("Could not request results from Google Speech Recognition service; {0}".format(e))
+	else:
+		try:
+			gui.ui.speechText.append(recognizer.recognize_google(audio))
+		except sr.UnknownValueError:
+			gui.ui.speechText.append("Google Speech Recognition could not understand audio")
+		except sr.RequestError as e:
+			gui.ui.speechText.append("Could not request results from Google Speech Recognition service; {0}".format(e))
 
 
-def speechRecognition(GUI):
-	global speechGUI
-	speechGUI = GUI
+def speechRecognition(GUI = None):
+	global gui
+	gui = GUI
 	r = sr.Recognizer()
 	m = sr.Microphone()
 	with m as source:
@@ -170,7 +192,7 @@ def SpectralEntropy(X, numOfShortBlocks=10):
 
 #TODO IGR for flux
 def SpectralFlux(X, Xprev):
-	# compute the spectral flux as the sum of square diances:
+	# compute the spectral flux as the sum of square
 	sumX = numpy.sum(X + eps)
 	sumPrevX = numpy.sum(Xprev + eps)
 	F = numpy.sum((X / sumX - Xprev/sumPrevX) ** 2)
@@ -182,7 +204,6 @@ def SpectralRollOff(X, c, fs):
 	totalEnergy = numpy.sum(X ** 2)
 	fftLength = len(X)
 	Thres = c*totalEnergy
-	# Ffind the spectral rolloff as the frequency position where the respective spectral energy is equal to c*totalEnergy
 	CumSum = numpy.cumsum(X ** 2) + eps
 	[a, ] = numpy.nonzero(CumSum > Thres)
 	if len(a) > 0:
@@ -396,7 +417,7 @@ def energyExtraction(x,Fs,Win, Step):
 def svmSegmentation(x, Fs, window, steps, plot=True):
 	smoothWindow=1
 	Weight=0.3
-	#TODO Step 1: feature extraction
+	#TODO Step 1: energy extraction
 	#TODO stereo2mono function defination to be rendered 
 	#TODO Warning stereo format is not relaible cause of multiple channels
 	x = stereo2mono(x)                        # convert to mono
