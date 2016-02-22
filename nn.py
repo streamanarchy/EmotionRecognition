@@ -5,7 +5,7 @@ class neuralNet(object):
 	def __init__(self):
 		self.inputLayerSize = 21
 		self.outputLayerSize = 7
-		self.hiddenLayerSize = 14
+		self.hiddenLayerSize = 11
 		self.W1 = np.random.randn(self.inputLayerSize,self.hiddenLayerSize)
 		self.W2 = np.random.randn(self.hiddenLayerSize,self.outputLayerSize)
 
@@ -23,18 +23,16 @@ class neuralNet(object):
 	def costFunction(self, X, y):
 		self.yHat = self.forward(X)
 		J = 0.5*sum((y-self.yHat)**2)
-		print J
 		return J
 	def costFunctionPrime(self, X, y):
 		self.yHat = self.forward(X)
-		print self.yHat
 		delta3 = np.multiply(-(y-self.yHat), self.sigmoidPrime(self.z3))
-		print delta3,"THE GAP",self.a2
-		
+		self.a2 = (self.a2)[np.newaxis]
+		delta3 = (delta3)[np.newaxis]
 		dJdW2 = np.dot(self.a2.T, delta3)
 
 		delta2 = np.dot(delta3, self.W2.T)*self.sigmoidPrime(self.z2)
-		dJdW1 = np.dot(X.T, delta2)
+		dJdW1 = np.dot(np.array(X)[np.newaxis].T, delta2)
 
 		return dJdW1, dJdW2
 
@@ -93,7 +91,7 @@ class trainer(object):
 
 		self.J = []
 		params0 = self.N.getParams()
-		options = {'maxiter': 200, 'disp' : True}
+		options = {'maxiter': 200, 'disp' : False}
 		_res = optimize.minimize(self.costFunctionWrapper, params0, jac=True, method='BFGS', args=(X, y), options=options, callback=self.callbackF)
 
 		self.N.setParams(_res.x)

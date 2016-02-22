@@ -6,6 +6,7 @@ import time
 import mlpy
 import numpy
 import matplotlib.pyplot as plt
+from sklearn import preprocessing as pp
 from scipy.io import wavfile
 from scipy.fftpack import fft
 from scipy.fftpack import dct
@@ -496,9 +497,8 @@ if __name__ == "__main__":
 	emoTrainer = trainer(neuralNetwork)
 	for trainWav in fileList:
 		l,x = wavfile.read(trainWav)
-		features = FeatureExtraction(x,Fs,16000,16000)
+		features = FeatureExtraction(x,Fs,16000,16000)*0.1
 		result = trainWav[-6]
-		print result
 		if result == 'F':
 			y = [1,0,0,0,0,0,0]
 		elif result =='W':
@@ -513,21 +513,17 @@ if __name__ == "__main__":
 			y = [0,0,0,0,0,1,0]
 		elif result =='N':
 			y = [0,0,0,0,0,0,1]
-
-		"""Y = []
-		for i in xrange(0,features.shape[1]):
-			Y.append(y)"""
-		#Y = numpy.array(Y).T
+		print result
 		features = features.T.tolist()
-		for frameFeatures in features:
-			emoTrainer.train(frameFeatures,y)
-
+		for i in xrange(0,features.__len__()):
+			emoTrainer.train(features[i],y)
 	for trainWav in fileList:
 		l,x = wavfile.read(trainWav)
-		features = FeatureExtraction(x,Fs,16000,16000)
+		features = FeatureExtraction(x,Fs,16000,16000)*0.1
 		print trainWav[-6]
-		y = neuralNetwork.forward(features)
-		print y
+
+		y = neuralNetwork.forward(features.T.tolist())
+		print sum(y)/y.shape[1]
 
 		#print "features:",features.shape
 
