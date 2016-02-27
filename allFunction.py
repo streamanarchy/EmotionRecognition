@@ -6,7 +6,6 @@ import time
 import mlpy
 import numpy
 import matplotlib.pyplot as plt
-from sklearn import preprocessing as pp
 from scipy.io import wavfile
 from scipy.fftpack import fft
 from scipy.fftpack import dct
@@ -24,13 +23,9 @@ eps = 0.00000001
 lowcut = 0
 highcut =0
 
-
-def call(GUI1):
-	thread.start_new_thread(recordAudioSegments,('/home/project/Documents/Project/input/wav/',6,GUI1))
-	thread.start_new_thread(speechRecognition,())
-
-	while 1:
-		pass
+def guiWrite(gui,text):
+	gui.ui.featureText.append(text)
+	return
 
 def butter_bandpass(lowcut, highcut, Fs, order):
 	#nyq = 0.5 * Fs
@@ -40,15 +35,12 @@ def butter_bandpass(lowcut, highcut, Fs, order):
 	return filtb, filta
 
 
-def recordAudioSegments(RecordPath, Bs, gui,plot=False):	#Bs: BlockSize
+def recordAudioSegments(RecordPath, Bs, plot=False):	#Bs: BlockSize
 	"""RecordPath += os.sep
 	d = os.path.dirname(RecordPath)
 	if os.path.exists(d) and RecordPath!=".":
 		shutil.rmtree(RecordPath)
 	os.makedirs(RecordPath)"""
-
-	global emotionGUI
-	emotionGUI = gui
 
 	inp = alsaaudio.PCM(alsaaudio.PCM_CAPTURE,alsaaudio.PCM_NONBLOCK)
 	inp.setchannels(1)
@@ -78,7 +70,6 @@ def recordAudioSegments(RecordPath, Bs, gui,plot=False):	#Bs: BlockSize
 
 		if len(midTermBuffer) == midTermBufferSize:
 			midTermBufferArray = numpy.int16(midTermBuffer)
-			# allData = allData + midTermBuffer
 			#curWavFileName = RecordPath + os.sep + str(elapsedTime) + ".wav"
 			#print midTermBuffer.__class__
 
@@ -94,7 +85,8 @@ def recordAudioSegments(RecordPath, Bs, gui,plot=False):	#Bs: BlockSize
 				plotSegments(midTermBufferArray,Fs,segmentLimits,ProbOnset)
 				break
 			Features = FeatureExtraction(midTermBufferArray,Fs,16000,16000)
-			gui.ui.featureText.append("here")
+			#guiWrite(gui,"text")
+
 			if plot == 'energy':
 				plotEnergy(Features[1])
 			#print "AUDIO  OUTPUT: Saved " + curWavFileName
@@ -513,6 +505,8 @@ def plotEnergy():
 
 if __name__ == "__main__":
 	count = 1
+	maxlist = [-999,-999,-999,-999,-999,-999,-999,-999,-999,-999,-999,-999,-999,-999,-999,-999,-999,-999,-999,-999,-999,]
+	minlist = [999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,]
 	fileList = glob.glob("/home/project/Documents/Project/training/wav/*.wav")
 	neuralNetwork = neuralNet()
 	emoTrainer = trainer(neuralNetwork)
@@ -537,14 +531,21 @@ if __name__ == "__main__":
 		print result
 		features = features.T.tolist()
 		for i in xrange(0,features.__len__()):
-			emoTrainer.train(features[i],y)
-	for trainWav in fileList:
+			for each in xrange(0,features[i].__len__()):
+				if maxlist[each] < features[i][each]:
+					maxlist[each]=features[i][each]
+				elif minlist[each] > features[i][each]:
+					minlist[each]=features[i][each]
+			#emoTrainer.train(features[i],y)
+	"""for trainWav in fileList:
 		l,x = wavfile.read(trainWav)
 		features = FeatureExtraction(x,Fs,16000,16000)*0.1
 		print trainWav[-6]
 
 		y = neuralNetwork.forward(features.T.tolist())
-		print sum(y)/y.shape[1]
+		print sum(y)/y.shape[1]"""
+	print minlist , maxlist
+	
 
 		#print "features:",features.shape
 
