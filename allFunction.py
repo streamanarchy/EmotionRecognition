@@ -15,8 +15,8 @@ import glob
 import speech_recognition as sr
 from nn import trainer
 from nn import neuralNet
+import main
 import thread
-#from scikits.talkbox.features import mfcc as MFCC
 from PyQt4 import QtCore, QtGui
 Fs = 16000
 eps = 0.00000001
@@ -80,11 +80,23 @@ def recordAudioSegments(RecordPath, Bs, plot=False):	#Bs: BlockSize
 			#TODO FeatureExtraction call to segmentation
 			#TODO Add call to segment voice i.e. svmSegmentation function
 			#adaptfilt.lms()
-			segmentLimits,ProbOnset = svmSegmentation(midTermBufferArray,Fs,0.02,0.02,False)
+			try:
+				segmentsArray,probOnSet = svmSegmentation(midTermBufferArray,Fs,0.05,0.05,plot = False)
+			except:
+				continue
+
+			x = numpy.array([])
+			for segments in segmentsArray:
+				if x.shape<=0:
+					x = midTermBufferArray[segments[0]*Fs:segments[1]*Fs]
+					continue
+				else:
+					x = numpy.hstack((x,midTermBufferArray[segments[0]*Fs:segments[1]*Fs]))
+
 			if plot == 'seg':
 				plotSegments(midTermBufferArray,Fs,segmentLimits,ProbOnset)
 				break
-			Features = FeatureExtraction(midTermBufferArray,Fs,16000,16000)
+			Features = FeatureExtraction(midTermBufferArray,Fs,x.shape[0],x.shape[0])
 			#guiWrite(gui,"text")
 
 			if plot == 'energy':
@@ -268,7 +280,7 @@ def FeatureExtraction(signal, Fs, Win, Step):
 
 	[fbank, freqs] = mfccInitFilterBanks(Fs, nFFT)                # compute the triangular filter banks used in the mfcc calculation
 
-	numOfTimeSpectralFeatures = 8
+	numOfTimeSpectralFeatures = 7
 	#numOfHarmonicFeatures = 0
 	nceps = 13  #MFCC features
 	#TODO IGR of harmonic features
@@ -293,8 +305,8 @@ def FeatureExtraction(signal, Fs, Win, Step):
 		curFV[2] = EnergyEntropy(x)                    # short-term entropy of energy
 		[curFV[3], curFV[4]] = SpectralCentroidAndSpread(X, Fs)    # spectral centroid and spread
 		curFV[5] = SpectralEntropy(X)                  # spectral entropy
-		curFV[6] = SpectralFlux(X, Xprev)              # spectral flux
-		curFV[7] = SpectralRollOff(X, 0.90, Fs)        # spectral rolloff
+		#curFV[6] = SpectralFlux(X, Xprev)              # spectral flux
+		curFV[6] = SpectralRollOff(X, 0.90, Fs)        # spectral rolloff
 		curFV[numOfTimeSpectralFeatures:numOfTimeSpectralFeatures+nceps, 0] = MFCC(X, fbank, nceps).copy()    # MFCCs
 		#curFV[numOfTimeSpectralFeatures:numOfTimeSpectralFeatures+nceps, 0] = MFCC(X, nwin = 2048, nfft = 2048)[0].T.copy()
 		if countFrames == 1:
@@ -303,7 +315,7 @@ def FeatureExtraction(signal, Fs, Win, Step):
 			Features = numpy.concatenate((Features, curFV), 1)    # update feature matrix
 		Xprev = X.copy()
 	
-	print Features.shape
+	#print Features.shape
 	#raw_input('features extracted:')
 	return numpy.array(Features)
 
@@ -338,10 +350,11 @@ def normalizeFeatures(features):
 			if count == 0:
 				X = f
 			else:
-				#if X.__len__() == 0 :
-				#	X=f
+				if X.__len__() == 0 :
+					X=f
 				#print "Vstack dimension",X.shape,f.shape
-				X = numpy.vstack((X, f))
+				else:
+					X = numpy.vstack((X, f))
 		count += 1
 
 	MEAN = numpy.mean(X, axis=0)
@@ -474,10 +487,10 @@ def svmSegmentation(x, Fs, window, steps, plot=True):
 	for s in segmentLimits:
 		if s[1] - s[0] > minDuration:
 			segmentLimits2.append(s)
-	segmentLimits = segmentLimits2"""
+	segmentLimits = segmentLimits2
 	if plot==True:
 		plotSegments(x, Fs, segmentLimits, ProbOnset)
-	#print "Segmentation;",segmentLimits
+	#print "Segmentation;",segmentLimits"""
 	return segmentLimits,ProbOnset
 
 def plotSegments(x, Fs, segmentLimits, ProbOnset):
@@ -503,32 +516,31 @@ def plotEnergy():
 	return
 
 
-if __name__ == "__main__":
-	count = 1
-	maxlist = [-999,-999,-999,-999,-999,-999,-999,-999,-999,-999,-999,-999,-999,-999,-999,-999,-999,-999,-999,-999,-999,]
-	minlist = [999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,]
+def train():
+	maxlist = [-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,]
+	minlist = [9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9]
 	fileList = glob.glob("/home/project/Documents/Project/training/wav/*.wav")
 	neuralNetwork = neuralNet()
 	emoTrainer = trainer(neuralNetwork)
+	denom = []
 	for trainWav in fileList:
-		l,x = wavfile.read(trainWav)
-		features = FeatureExtraction(x,Fs,16000,16000)*0.1
-		result = trainWav[-6]
-		if result == 'F':
-			y = [1,0,0,0,0,0,0]
-		elif result =='W':
-			y = [0,1,0,0,0,0,0]
-		elif result =='A':
-			y = [0,0,1,0,0,0,0]
-		elif result =='L':
-			y = [0,0,0,1,0,0,0]
-		elif result =='E':
-			y = [0,0,0,0,1,0,0]
-		elif result =='T':
-			y = [0,0,0,0,0,1,0]
-		elif result =='N':
-			y = [0,0,0,0,0,0,1]
-		print result
+		l,xraw = wavfile.read(trainWav)
+		try:
+			segmentsArray,probOnSet = svmSegmentation(xraw,Fs,0.05,0.05,plot = False)
+		#print segments
+		except:
+			continue
+
+		x = numpy.array([])
+		for segments in segmentsArray:
+			if x.shape<=0:
+				x = xraw[segments[0]*Fs:segments[1]*Fs]
+				continue
+			else:
+				#print x.shape,xraw.shape
+				x = numpy.hstack((x,xraw[segments[0]*Fs:segments[1]*Fs]))
+		features = FeatureExtraction(x,Fs,x.shape[0],x.shape[0])
+
 		features = features.T.tolist()
 		for i in xrange(0,features.__len__()):
 			for each in xrange(0,features[i].__len__()):
@@ -536,21 +548,108 @@ if __name__ == "__main__":
 					maxlist[each]=features[i][each]
 				elif minlist[each] > features[i][each]:
 					minlist[each]=features[i][each]
-			#emoTrainer.train(features[i],y)
-	"""for trainWav in fileList:
-		l,x = wavfile.read(trainWav)
-		features = FeatureExtraction(x,Fs,16000,16000)*0.1
+	print maxlist.__len__(),features.__len__()
+	for x in xrange(0,maxlist.__len__()):
+		denom.append(maxlist[x]-minlist[x])
+	print maxlist,minlist,denom.__len__(),denom
+
+	countlist = [0,0,0,0,0,0,0]
+
+	for trainWav in fileList:
+		l,xraw = wavfile.read(trainWav)
+		try:
+			segmentsArray,probOnSet = svmSegmentation(xraw,Fs,0.05,0.05,plot = False)
+		except:
+			continue
+
+		x = numpy.array([])
+		for segments in segmentsArray:
+			if x.shape<=0:
+				x = xraw[segments[0]*Fs:segments[1]*Fs]
+				continue
+			else:
+				x = numpy.hstack((x,xraw[segments[0]*Fs:segments[1]*Fs]))
+
+		features = FeatureExtraction(x,Fs,x.shape[0],x.shape[0])
+		result = trainWav[-6]
+
+		if result == 'F':
+			y = [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+			countlist[0] = countlist[0]+1
+
+		elif result =='W':
+			y = [0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+			countlist[1] = countlist[1]+1
+
+		elif result =='A':
+			y = [0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0]
+			countlist[2] = countlist[2]+1
+
+		elif result =='L':
+			y = [0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0]
+			countlist[3] = countlist[3]+1
+
+		elif result =='E':
+			y = [0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0]
+			countlist[4] = countlist[4]+1
+
+		elif result =='T':
+			y = [0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0]
+			countlist[5] = countlist[5]+1
+
+		elif result =='N':
+			y = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0]
+			countlist[6] = countlist[6]+1
+
+
+
+		features = features.T.tolist()
+		for axis0 in xrange(0,features.__len__()):
+			normalizedFeatures = []
+			for axis1 in xrange(0,features[axis0].__len__()):
+				normalizedFeatures.append((features[axis0][axis1]-minlist[axis1])/denom[axis1])
+			print normalizedFeatures
+
+			emoTrainer.train(normalizedFeatures,y)
+
+
+	for trainWav in fileList:
+		l,xraw = wavfile.read(trainWav)
+		try:
+			segmentsArray,probOnSet = svmSegmentation(xraw,Fs,0.05,0.05,plot = False)
+		except:
+			continue
+
+		x = numpy.array([])
+		for segments in segmentsArray:
+			if x.shape<=0:
+				x = xraw[segments[0]*Fs:segments[1]*Fs]
+				continue
+			else:
+				x = numpy.hstack((x,xraw[segments[0]*Fs:segments[1]*Fs]))
+
+		features = FeatureExtraction(x,Fs,x.shape[0],x.shape[0])
 		print trainWav[-6]
 
-		y = neuralNetwork.forward(features.T.tolist())
-		print sum(y)/y.shape[1]"""
-	print minlist , maxlist
-	
+		print "[F,W,A,L,E,T,N]"
+		features = features.T.tolist()
+		finalResponse = []
+		for axis0 in xrange(0,features.__len__()):
+			normalizedFeatures = []
+			for axis1 in xrange(0,features[axis0].__len__()):
+				normalizedFeatures.append((features[axis0][axis1]-minlist[axis1])/denom[axis1])
+			finalResponse.append( neuralNetwork.forward(normalizedFeatures))
+		print finalResponse
+		print sum(numpy.array(finalResponse)/features.__len__())
+	print countlist
 
-		#print "features:",features.shape
-
-
-
-
+if __name__ == "__main__":
+	while 1:
+		print("Select your options:\n1.Train and Test \n2.Input and Analyze\nInput:")
+		optionInput = int(raw_input())
+		if optionInput == 1:
+			train()
+		if optionInput == 2:
+			main()
 
 

@@ -3,9 +3,9 @@ from scipy import optimize
 
 class neuralNet(object):
 	def __init__(self):
-		self.inputLayerSize = 21
+		self.inputLayerSize = 20
 		self.outputLayerSize = 7
-		self.hiddenLayerSize = 11
+		self.hiddenLayerSize = 14
 		self.W1 = np.random.randn(self.inputLayerSize,self.hiddenLayerSize)
 		self.W2 = np.random.randn(self.hiddenLayerSize,self.outputLayerSize)
 
@@ -39,6 +39,7 @@ class neuralNet(object):
 	def getParams(self):
 		params = np.concatenate((self.W1.ravel(), self.W2.ravel()))
 		return params
+
 	def setParams(self, params):
 		W1_start = 0
 		W1_end = self.hiddenLayerSize * self.inputLayerSize
@@ -91,11 +92,11 @@ class trainer(object):
 
 		self.J = []
 		params0 = self.N.getParams()
-		options = {'maxiter': 200, 'disp' : False}
-		_res = optimize.minimize(self.costFunctionWrapper, params0, jac=True, method='BFGS', args=(X, y), options=options, callback=self.callbackF)
+		options = { 'disp' : True}
+		res = optimize.minimize(self.costFunctionWrapper, params0, jac=True, method='Nelder-Mead', args=(X, y), options=options, callback=self.callbackF)
 
-		self.N.setParams(_res.x)
-		self.optimizationResults = _res
+		self.N.setParams(res.x)
+		self.optimizationResults = res
 
 
 if __name__ == "__main__":

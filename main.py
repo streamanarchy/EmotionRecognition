@@ -63,7 +63,7 @@ class mainDialog(QtGui.QMainWindow):
         self.emotionDialogUI = emotionUI()
         self.emotionDialogUI.show()
         self.emotionDialogUI.raise_()
-        aF.recordAudioSegments('/home/project/Documents/Project/input/wav/',1,self.emotionDialogUI)
+        aF.recordAudioSegments('/home/project/Documents/Project/input/wav/',8,self.emotionDialogUI)
 
     def speechDialog(self):
         print "speechDialog"
