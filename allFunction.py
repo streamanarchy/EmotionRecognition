@@ -16,12 +16,22 @@ import speech_recognition as sr
 from nn import trainer
 from nn import neuralNet
 import main
+import pickle
 import thread
 from PyQt4 import QtCore, QtGui
+
+
+
 Fs = 16000
 eps = 0.00000001
 lowcut = 0
 highcut =0
+neuralNetwork = neuralNet("test.nn")
+emoTrainer = trainer(neuralNetwork)
+maxlist = [-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9]
+minlist = [9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9]
+denom = []
+
 
 def guiWrite(gui,text):
 	gui.ui.featureText.append(text)
@@ -33,7 +43,6 @@ def butter_bandpass(lowcut, highcut, Fs, order):
 	#high = highcut / nyq
 	filtb, filta = butter(order, 0.1,btype = 'low')
 	return filtb, filta
-
 
 def recordAudioSegments(RecordPath, Bs, plot=False):	#Bs: BlockSize
 	"""RecordPath += os.sep
@@ -81,7 +90,7 @@ def recordAudioSegments(RecordPath, Bs, plot=False):	#Bs: BlockSize
 			#TODO Add call to segment voice i.e. svmSegmentation function
 			#adaptfilt.lms()
 			try:
-				segmentsArray,probOnSet = svmSegmentation(midTermBufferArray,Fs,0.05,0.05,plot = False)
+				segmentsArray,ProbOnSet = svmSegmentation(midTermBufferArray,Fs,0.05,0.05,plot = False)
 			except:
 				continue
 
@@ -94,11 +103,28 @@ def recordAudioSegments(RecordPath, Bs, plot=False):	#Bs: BlockSize
 					x = numpy.hstack((x,midTermBufferArray[segments[0]*Fs:segments[1]*Fs]))
 
 			if plot == 'seg':
-				plotSegments(midTermBufferArray,Fs,segmentLimits,ProbOnset)
+				plotSegments(midTermBufferArray,Fs,segmentsArray,ProbOnSet)
 				break
 			Features = FeatureExtraction(midTermBufferArray,Fs,x.shape[0],x.shape[0])
 			#guiWrite(gui,"text")
+			features = Features.T.tolist()
+			for axis0 in xrange(0,features.__len__()):
+				normalizedFeatures = []
+				for axis1 in xrange(0,features[axis0].__len__()):
+					normalizedFeatures.append((features[axis0][axis1]-minlist[axis1])/denom[axis1])
+				#print normalizedFeatures
+			plotdata = []
+			res = neuralNetwork.forward(normalizedFeatures)
 
+
+			fig, ax =plt.subplots()
+			ar = numpy.arange(7)
+			print res
+			barPlot = ax.bar(ar,res,0.35)
+			plt.show()
+
+
+			print "Happiness:",res[0],"Anger:",res[1],"Fear:",res[2],"Boredom:",res[3],"Disgust:",res[4],"Sadness:",res[5],"Neutral:",res[6]
 			if plot == 'energy':
 				plotEnergy(Features[1])
 			#print "AUDIO  OUTPUT: Saved " + curWavFileName
@@ -121,7 +147,6 @@ def googleRecognition(recognizer, audio):
 		except sr.RequestError as e:
 			gui.ui.speechText.append("Could not request results from Google Speech Recognition service; {0}".format(e))
 
-
 def speechRecognition(GUI = None):
 	global gui
 	gui = GUI
@@ -136,10 +161,8 @@ def ZCR(frame):
 	countZ = numpy.sum(numpy.abs(numpy.diff(numpy.sign(frame)))) / 2
 	return (numpy.float64(countZ) / numpy.float64(count-1.0))
 
-
 def Energy(frame):
 	return numpy.sum(frame ** 2) / numpy.float64(len(frame))
-
 
 def EnergyEntropy(frame, numOfShortBlocks=10):
 	Eol = numpy.sum(frame ** 2)    # total frame energy
@@ -156,7 +179,6 @@ def EnergyEntropy(frame, numOfShortBlocks=10):
 	# Compute entropy of the normalized sub-frame energies:
 	Entropy = -numpy.sum(s * numpy.log2(s + eps))
 	return Entropy
-
 
 def SpectralCentroidAndSpread(X, fs):
 	ind = (numpy.arange(1, len(X) + 1)) * (fs/(2.0 * len(X)))
@@ -177,7 +199,6 @@ def SpectralCentroidAndSpread(X, fs):
 	S = S / (fs / 2.0)
 
 	return (C, S)
-
 
 def SpectralEntropy(X, numOfShortBlocks=10):
 
@@ -255,7 +276,6 @@ def mfccInitFilterBanks(fs, nfft):
 
 	return fbank, freqs
 
-
 def MFCC(X, fbank, nceps):
 
 	mspec = numpy.log10(numpy.dot(X, fbank.T)+eps)
@@ -280,7 +300,7 @@ def FeatureExtraction(signal, Fs, Win, Step):
 
 	[fbank, freqs] = mfccInitFilterBanks(Fs, nFFT)                # compute the triangular filter banks used in the mfcc calculation
 
-	numOfTimeSpectralFeatures = 7
+	numOfTimeSpectralFeatures = 6
 	#numOfHarmonicFeatures = 0
 	nceps = 13  #MFCC features
 	#TODO IGR of harmonic features
@@ -304,9 +324,9 @@ def FeatureExtraction(signal, Fs, Win, Step):
 		curFV[1] = Energy(x)                           # short-term energy
 		curFV[2] = EnergyEntropy(x)                    # short-term entropy of energy
 		[curFV[3], curFV[4]] = SpectralCentroidAndSpread(X, Fs)    # spectral centroid and spread
-		curFV[5] = SpectralEntropy(X)                  # spectral entropy
+		#curFV[5] = SpectralEntropy(X)                  # spectral entropy
 		#curFV[6] = SpectralFlux(X, Xprev)              # spectral flux
-		curFV[6] = SpectralRollOff(X, 0.90, Fs)        # spectral rolloff
+		curFV[5] = SpectralRollOff(X, 0.90, Fs)        # spectral rolloff
 		curFV[numOfTimeSpectralFeatures:numOfTimeSpectralFeatures+nceps, 0] = MFCC(X, fbank, nceps).copy()    # MFCCs
 		#curFV[numOfTimeSpectralFeatures:numOfTimeSpectralFeatures+nceps, 0] = MFCC(X, nwin = 2048, nfft = 2048)[0].T.copy()
 		if countFrames == 1:
@@ -331,7 +351,6 @@ def smoothMovingAvg(inputSignal,windowLen):
 	w = numpy.ones(windowLen, 'd')
 	y = numpy.convolve(w/w.sum(), s, mode='same')
 	return y[windowLen:-windowLen+1]
-
 
 def stereo2mono(x):
 	if x.ndim==1:
@@ -382,6 +401,7 @@ def trainSVM(features, Cparam):
 	svm = mlpy.LibSvm(svm_type='c_svc', kernel_type='linear', eps=0.0000001, C=Cparam, probability=True)
 	svm.learn(X, Y)
 	return svm
+
 def energyExtraction(x,Fs,Win, Step):
 	Win = int(Win)
 	Step = int(Step)
@@ -487,10 +507,10 @@ def svmSegmentation(x, Fs, window, steps, plot=True):
 	for s in segmentLimits:
 		if s[1] - s[0] > minDuration:
 			segmentLimits2.append(s)
-	segmentLimits = segmentLimits2
+	segmentLimits = segmentLimits2"""
 	if plot==True:
 		plotSegments(x, Fs, segmentLimits, ProbOnset)
-	#print "Segmentation;",segmentLimits"""
+	#print "Segmentation;",segmentLimits
 	return segmentLimits,ProbOnset
 
 def plotSegments(x, Fs, segmentLimits, ProbOnset):
@@ -515,17 +535,11 @@ def plotSegments(x, Fs, segmentLimits, ProbOnset):
 def plotEnergy():
 	return
 
-
 def train():
-	maxlist = [-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,]
-	minlist = [9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9]
 	fileList = glob.glob("/home/project/Documents/Project/training/wav/*.wav")
-	neuralNetwork = neuralNet()
-	emoTrainer = trainer(neuralNetwork)
-	denom = []
 	for trainWav in fileList:
-		l,xraw = wavfile.read(trainWav)
-		try:
+		l,x = wavfile.read(trainWav)
+		"""try:
 			segmentsArray,probOnSet = svmSegmentation(xraw,Fs,0.05,0.05,plot = False)
 		#print segments
 		except:
@@ -538,7 +552,8 @@ def train():
 				continue
 			else:
 				#print x.shape,xraw.shape
-				x = numpy.hstack((x,xraw[segments[0]*Fs:segments[1]*Fs]))
+				x = numpy.hstack((x,xraw[segments[0]*Fs:segments[1]*Fs]))"""
+
 		features = FeatureExtraction(x,Fs,x.shape[0],x.shape[0])
 
 		features = features.T.tolist()
@@ -548,10 +563,9 @@ def train():
 					maxlist[each]=features[i][each]
 				elif minlist[each] > features[i][each]:
 					minlist[each]=features[i][each]
-	print maxlist.__len__(),features.__len__()
+
 	for x in xrange(0,maxlist.__len__()):
 		denom.append(maxlist[x]-minlist[x])
-	print maxlist,minlist,denom.__len__(),denom
 
 	countlist = [0,0,0,0,0,0,0]
 
@@ -575,32 +589,48 @@ def train():
 
 		if result == 'F':
 			y = [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-			countlist[0] = countlist[0]+1
 
+			if countlist[0] >= 58:
+				continue
+			countlist[0] = countlist[0]+1
 		elif result =='W':
 			y = [0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-			countlist[1] = countlist[1]+1
 
+			if countlist[1] >= 70:
+				continue
+			countlist[1] = countlist[1]+1
 		elif result =='A':
 			y = [0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0]
-			countlist[2] = countlist[2]+1
 
+			if countlist[2] >= 60:
+				continue
+			countlist[2] = countlist[2]+1
 		elif result =='L':
 			y = [0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0]
+
+			if countlist[3] >= 50:
+				continue
 			countlist[3] = countlist[3]+1
 
 		elif result =='E':
 			y = [0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0]
+
+			if countlist[4] >= 60:
+				continue
 			countlist[4] = countlist[4]+1
 
 		elif result =='T':
 			y = [0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0]
-			countlist[5] = countlist[5]+1
 
+			if countlist[5] >= 60:
+				continue
+			countlist[5] = countlist[5]+1
 		elif result =='N':
 			y = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0]
-			countlist[6] = countlist[6]+1
 
+			if countlist[6] >= 60:
+				continue
+			countlist[6] = countlist[6]+1
 
 
 		features = features.T.tolist()
@@ -608,10 +638,13 @@ def train():
 			normalizedFeatures = []
 			for axis1 in xrange(0,features[axis0].__len__()):
 				normalizedFeatures.append((features[axis0][axis1]-minlist[axis1])/denom[axis1])
-			print normalizedFeatures
+			#print normalizedFeatures
 
 			emoTrainer.train(normalizedFeatures,y)
 
+	filename = raw_input("Enter File Name:")
+	fileBuffer  = open(filename,"w")
+	pickle.dump(neuralNetwork,fileBuffer)
 
 	for trainWav in fileList:
 		l,xraw = wavfile.read(trainWav)
@@ -644,12 +677,13 @@ def train():
 	print countlist
 
 if __name__ == "__main__":
+
 	while 1:
-		print("Select your options:\n1.Train and Test \n2.Input and Analyze\nInput:")
+		print("Select your options:\n1.Train and Test \n2.Input and Analyze\n3.Voice analysis\nInput:")
 		optionInput = int(raw_input())
 		if optionInput == 1:
 			train()
 		if optionInput == 2:
-			main()
-
-
+			main.control()
+		if optionInput == 3:
+			recordAudioSegments("",4)

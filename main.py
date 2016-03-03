@@ -9,7 +9,7 @@
 from PyQt4 import QtCore, QtGui
 from speech import speechUI
 import sys
-from features import voiceUI
+import features
 from emotion import emotionUI
 import allFunction as aF
 try:
@@ -74,10 +74,16 @@ class mainDialog(QtGui.QMainWindow):
 
 
     def voiceDialog(self):
-        self.voiceDialogUI = voiceUI()
+        self.voiceDialogUI = features.voiceUI()
         self.voiceDialogUI.show()
         self.voiceDialogUI.raise_()
 
+
+def control():
+    app = QtGui.QApplication(sys.argv)
+    view = mainDialog()
+    view.show()
+    sys.exit(app.exec_())
 
 if __name__ =="__main__":
     app = QtGui.QApplication(sys.argv)

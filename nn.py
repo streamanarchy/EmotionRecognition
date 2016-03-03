@@ -1,13 +1,19 @@
 import numpy as np
 from scipy import optimize
+import pickle
 
 class neuralNet(object):
-	def __init__(self):
-		self.inputLayerSize = 20
-		self.outputLayerSize = 7
-		self.hiddenLayerSize = 14
-		self.W1 = np.random.randn(self.inputLayerSize,self.hiddenLayerSize)
-		self.W2 = np.random.randn(self.hiddenLayerSize,self.outputLayerSize)
+	def __init__(self,weightFile = None):
+		if weightFile == None:
+			self.inputLayerSize = 19
+			self.outputLayerSize = 7
+			self.hiddenLayerSize = 13
+			self.W1 = np.random.rand(self.inputLayerSize,self.hiddenLayerSize)
+			self.W2 = np.random.rand(self.hiddenLayerSize,self.outputLayerSize)
+		else:
+			weightFileBuffer = open(weightFile,"r")
+			self = pickle.load(weightFileBuffer)
+			print self.W1
 
 	def forward(self,X):
 		self.z2 = np.dot(X, self.W1)
@@ -92,8 +98,8 @@ class trainer(object):
 
 		self.J = []
 		params0 = self.N.getParams()
-		options = { 'disp' : True}
-		res = optimize.minimize(self.costFunctionWrapper, params0, jac=True, method='Nelder-Mead', args=(X, y), options=options, callback=self.callbackF)
+		options = {'maxiter':1,'disp' : True}
+		res = optimize.minimize(self.costFunctionWrapper, params0, jac=True, method='BFGS', args=(X, y), options=options, callback=self.callbackF)
 
 		self.N.setParams(res.x)
 		self.optimizationResults = res
