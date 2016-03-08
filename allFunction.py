@@ -642,9 +642,6 @@ def train():
 
 			emoTrainer.train(normalizedFeatures,y)
 
-	filename = raw_input("Enter File Name:")
-	fileBuffer  = open(filename,"w")
-	pickle.dump(neuralNetwork,fileBuffer)
 
 	for trainWav in fileList:
 		l,xraw = wavfile.read(trainWav)
@@ -673,8 +670,16 @@ def train():
 				normalizedFeatures.append((features[axis0][axis1]-minlist[axis1])/denom[axis1])
 			finalResponse.append( neuralNetwork.forward(normalizedFeatures))
 		print finalResponse
-		print sum(numpy.array(finalResponse)/features.__len__())
+		res =  sum(numpy.array(finalResponse)/features.__len__())
 	print countlist
+	total = sum(res)
+	factor = res / total
+
+	max(factor)
+
+	
+	fileBuffer  = open(filename,"w")
+	pickle.dump(neuralNetwork,fileBuffer)
 
 if __name__ == "__main__":
 
