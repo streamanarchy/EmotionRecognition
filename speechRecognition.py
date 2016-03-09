@@ -1,21 +1,21 @@
 import speech_recognition
 
-class speechRecognition(object):
+class SpeechRecognition(object):
 
     def __init__(self):
         self.recognizer = speech_recognition.Recognizer()
         self.microphone = speech_recognition.Microphone()
 
     def noiseAdjustment(self):
-        return self.recognizer.adjust_for_ambient_noise(self.microphone)
+        with self.microphone as source:
+            self.recognizer.adjust_for_ambient_noise(source)
 
     def backgroundListen(self):
-        with self.recognizer as source:
-            self.recognizer.listen_in_background(source, self.recognition)
+        self.recognizer.listen_in_background(self.microphone, self.recognition)
 
-    def recognition(self, audio):
+    def recognition(self,recognizer, audio):
         try:
-            speechText = self.recognizer.recognize_google(audio,key=None,language="en-US",show_all=True)
+            speechText = recognizer.recognize_google(audio)
             #TODO redirect speech Text
             print speechText
         except speech_recognition.UnknownValueError:
@@ -24,6 +24,8 @@ class speechRecognition(object):
             print "Can't Connect"
 
 if __name__ == "__main__":
-    speechRecognition = speechRecognition()
-    speechRecognition.noiseAdjustment()
-    speechRecognition.backgroundListen()
+    speechRecognitionEnglish = SpeechRecognition()
+    speechRecognitionEnglish.noiseAdjustment()
+    speechRecognitionEnglish.backgroundListen()
+    while 1:
+        pass

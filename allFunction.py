@@ -682,7 +682,7 @@ def train():
 	pickle.dump(neuralNetwork,fileBuffer)
 
 if __name__ == "__main__":
-
+	speechRecognition()
 	while 1:
 		print("Select your options:\n1.Train and Test \n2.Input and Analyze\n3.Voice analysis\nInput:")
 		optionInput = int(raw_input())

@@ -4,7 +4,7 @@ import numpy as np
 from scipy.fftpack import fft
 import mlpy
 
-class voiceInput():
+class VoiceInput():
     def __init__(self):
         self.Fs = 16000
 
@@ -216,5 +216,5 @@ class voiceInput():
         return segmentLimits,ProbOnset
 
 if __name__ == "__main__":
-    voiceInput = voiceInput()
-    voiceInput.voiceInput(4)
+    voiceinput = VoiceInput()
+    voiceinput.voiceInput(4)

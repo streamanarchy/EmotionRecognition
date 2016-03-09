@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="72c015bb-bf35-409c-8888-1ee8f3d2222f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/recognition.py" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/allFunction.py" afterPath="$PROJECT_DIR$/allFunction.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/emotionRecognition.py" afterPath="$PROJECT_DIR$/emotionRecognition.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/speechRecognition.py" afterPath="$PROJECT_DIR$/speechRecognition.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voiceInput.py" afterPath="$PROJECT_DIR$/voiceInput.py" />
     </list>
     <ignored path="Code.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,13 +31,11 @@
         <entry file="file://$PROJECT_DIR$/allFunction.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="389" column="0" selection-start-line="389" selection-start-column="0" selection-end-line="402" selection-end-column="14" />
+              <caret line="238" column="0" selection-start-line="157" selection-start-column="0" selection-end-line="238" selection-end-column="0" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
                 <element signature="e#731#770#0" expanded="false" />
                 <element signature="e#822#951#0" expanded="false" />
-                <element signature="e#1022#3805#0" expanded="false" />
-                <element signature="e#3850#4471#0" expanded="false" />
                 <element signature="e#4698#4841#0" expanded="false" />
                 <element signature="e#4863#4919#0" expanded="false" />
                 <element signature="e#4969#5526#0" expanded="false" />
@@ -42,7 +43,6 @@
                 <element signature="e#5933#6535#0" expanded="false" />
                 <element signature="e#6585#6755#0" expanded="false" />
                 <element signature="e#6811#7059#0" expanded="false" />
-                <element signature="e#7098#8290#0" expanded="false" />
                 <element signature="e#8321#8438#0" expanded="false" />
                 <element signature="e#8487#11016#0" expanded="false" />
                 <element signature="e#11064#11496#0" expanded="false" />
@@ -59,22 +59,53 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="speechRecognition.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/speechRecognition.py">
+      <file leaf-file-name="voiceFeature.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/voiceFeature.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.18427518">
-              <caret line="5" column="57" selection-start-line="5" selection-start-column="57" selection-end-line="5" selection-end-column="57" />
-              <folding />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="186" column="26" selection-start-line="186" selection-start-column="26" selection-end-line="186" selection-end-column="26" />
+              <folding>
+                <element signature="e#140#7331#0" expanded="false" />
+                <element signature="e#168#213#0" expanded="false" />
+                <element signature="e#249#388#0" expanded="false" />
+                <element signature="e#426#476#0" expanded="false" />
+                <element signature="e#543#1175#0" expanded="false" />
+                <element signature="e#1233#1624#0" expanded="false" />
+                <element signature="e#1690#2346#0" expanded="false" />
+                <element signature="e#2394#2593#0" expanded="false" />
+                <element signature="e#2644#2954#0" expanded="false" />
+                <element signature="e#3009#4387#0" expanded="false" />
+                <element signature="e#4435#4567#0" expanded="false" />
+                <element signature="e#4629#7331#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="emotionRecognition.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/emotionRecognition.py">
+      <file leaf-file-name="speechRecognition.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/speechRecognition.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="8" column="40" selection-start-line="8" selection-start-column="40" selection-end-line="8" selection-end-column="40" />
-              <folding />
+              <caret line="26" column="43" selection-start-line="26" selection-start-column="43" selection-end-line="26" selection-end-column="43" />
+              <folding>
+                <element signature="e#65#805#0" expanded="false" />
+                <element signature="e#93#200#0" expanded="false" />
+                <element signature="e#241#333#0" expanded="false" />
+                <element signature="e#375#446#0" expanded="false" />
+                <element signature="e#501#805#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="emotionRecognition.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/emotionRecognition.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.33169532">
+              <caret line="9" column="42" selection-start-line="9" selection-start-column="42" selection-end-line="9" selection-end-column="42" />
+              <folding>
+                <element signature="e#0#17#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -82,11 +113,10 @@
       <file leaf-file-name="voiceInput.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/voiceInput.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.7272727">
-              <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="217" column="26" selection-start-line="217" selection-start-column="26" selection-end-line="217" selection-end-column="26" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
-                <element signature="e#118#8617#0" expanded="false" />
                 <element signature="e#146#161#0" expanded="false" />
                 <element signature="e#200#2088#0" expanded="false" />
                 <element signature="e#2122#2295#0" expanded="false" />
@@ -182,8 +212,9 @@
         <option value="$PROJECT_DIR$/nn.py" />
         <option value="$PROJECT_DIR$/allFunction.py" />
         <option value="$PROJECT_DIR$/voiceInput.py" />
-        <option value="$PROJECT_DIR$/emotionRecognition.py" />
         <option value="$PROJECT_DIR$/speechRecognition.py" />
+        <option value="$PROJECT_DIR$/voiceFeature.py" />
+        <option value="$PROJECT_DIR$/emotionRecognition.py" />
       </list>
     </option>
   </component>
@@ -217,6 +248,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -241,8 +274,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -472,8 +503,8 @@
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.speechRecognition" />
-        <item index="1" class="java.lang.String" itemvalue="Python.voiceInput" />
-        <item index="2" class="java.lang.String" itemvalue="Python.allFunction" />
+        <item index="1" class="java.lang.String" itemvalue="Python.allFunction" />
+        <item index="2" class="java.lang.String" itemvalue="Python.voiceInput" />
         <item index="3" class="java.lang.String" itemvalue="Python.plotting" />
         <item index="4" class="java.lang.String" itemvalue="Python.main" />
       </list>
@@ -505,7 +536,7 @@
     <frame x="0" y="27" width="1366" height="741" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24888226" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24888226" sideWeight="0.49202734" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32890365" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32890365" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -513,7 +544,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2707641" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962743" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286052" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329429" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24888226" sideWeight="0.50797266" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -556,7 +587,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="4" />
+      <option name="time" value="6" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -565,7 +596,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="2" column="48" selection-start-line="2" selection-start-column="48" selection-end-line="20" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -573,7 +603,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="53" column="19" selection-start-line="53" selection-start-column="19" selection-end-line="53" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -621,8 +650,6 @@
             <element signature="e#0#10#0" expanded="true" />
             <element signature="e#731#770#0" expanded="false" />
             <element signature="e#822#951#0" expanded="false" />
-            <element signature="e#1022#3805#0" expanded="false" />
-            <element signature="e#3850#4471#0" expanded="false" />
             <element signature="e#4698#4841#0" expanded="false" />
             <element signature="e#4863#4919#0" expanded="false" />
             <element signature="e#4969#5526#0" expanded="false" />
@@ -630,7 +657,6 @@
             <element signature="e#5933#6535#0" expanded="false" />
             <element signature="e#6585#6755#0" expanded="false" />
             <element signature="e#6811#7059#0" expanded="false" />
-            <element signature="e#7098#8290#0" expanded="false" />
             <element signature="e#8321#8438#0" expanded="false" />
             <element signature="e#8487#11016#0" expanded="false" />
             <element signature="e#11064#11496#0" expanded="false" />
@@ -650,9 +676,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="21" column="45" selection-start-line="21" selection-start-column="45" selection-end-line="21" selection-end-column="45" />
-          <folding>
-            <element signature="e#0#10#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -660,7 +683,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="2" column="48" selection-start-line="2" selection-start-column="48" selection-end-line="20" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -678,7 +700,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="53" column="19" selection-start-line="53" selection-start-column="19" selection-end-line="53" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -726,8 +747,6 @@
             <element signature="e#0#10#0" expanded="true" />
             <element signature="e#731#770#0" expanded="false" />
             <element signature="e#822#951#0" expanded="false" />
-            <element signature="e#1022#3805#0" expanded="false" />
-            <element signature="e#3850#4471#0" expanded="false" />
             <element signature="e#4698#4841#0" expanded="false" />
             <element signature="e#4863#4919#0" expanded="false" />
             <element signature="e#4969#5526#0" expanded="false" />
@@ -735,7 +754,6 @@
             <element signature="e#5933#6535#0" expanded="false" />
             <element signature="e#6585#6755#0" expanded="false" />
             <element signature="e#6811#7059#0" expanded="false" />
-            <element signature="e#7098#8290#0" expanded="false" />
             <element signature="e#8321#8438#0" expanded="false" />
             <element signature="e#8487#11016#0" expanded="false" />
             <element signature="e#11064#11496#0" expanded="false" />
@@ -765,7 +783,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="53" column="19" selection-start-line="53" selection-start-column="19" selection-end-line="53" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -813,8 +830,6 @@
             <element signature="e#0#10#0" expanded="true" />
             <element signature="e#731#770#0" expanded="false" />
             <element signature="e#822#951#0" expanded="false" />
-            <element signature="e#1022#3805#0" expanded="false" />
-            <element signature="e#3850#4471#0" expanded="false" />
             <element signature="e#4698#4841#0" expanded="false" />
             <element signature="e#4863#4919#0" expanded="false" />
             <element signature="e#4969#5526#0" expanded="false" />
@@ -822,7 +837,6 @@
             <element signature="e#5933#6535#0" expanded="false" />
             <element signature="e#6585#6755#0" expanded="false" />
             <element signature="e#6811#7059#0" expanded="false" />
-            <element signature="e#7098#8290#0" expanded="false" />
             <element signature="e#8321#8438#0" expanded="false" />
             <element signature="e#8487#11016#0" expanded="false" />
             <element signature="e#11064#11496#0" expanded="false" />
@@ -842,7 +856,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="53" column="19" selection-start-line="53" selection-start-column="19" selection-end-line="53" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -890,8 +903,6 @@
             <element signature="e#0#10#0" expanded="true" />
             <element signature="e#731#770#0" expanded="false" />
             <element signature="e#822#951#0" expanded="false" />
-            <element signature="e#1022#3805#0" expanded="false" />
-            <element signature="e#3850#4471#0" expanded="false" />
             <element signature="e#4698#4841#0" expanded="false" />
             <element signature="e#4863#4919#0" expanded="false" />
             <element signature="e#4969#5526#0" expanded="false" />
@@ -899,7 +910,6 @@
             <element signature="e#5933#6535#0" expanded="false" />
             <element signature="e#6585#6755#0" expanded="false" />
             <element signature="e#6811#7059#0" expanded="false" />
-            <element signature="e#7098#8290#0" expanded="false" />
             <element signature="e#8321#8438#0" expanded="false" />
             <element signature="e#8487#11016#0" expanded="false" />
             <element signature="e#11064#11496#0" expanded="false" />
@@ -975,13 +985,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/recognition.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/lib64/python2.7/site-packages/scipy/io/wavfile.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33169532">
@@ -993,9 +996,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="21" column="45" selection-start-line="21" selection-start-column="45" selection-end-line="21" selection-end-column="45" />
-          <folding>
-            <element signature="e#0#10#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1003,7 +1003,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="2" column="48" selection-start-line="2" selection-start-column="48" selection-end-line="20" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1011,15 +1010,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="53" column="19" selection-start-line="53" selection-start-column="19" selection-end-line="53" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/speech.py">
+    <entry file="file://$PROJECT_DIR$/nn.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-          <folding />
+          <caret line="48" column="32" selection-start-line="48" selection-start-column="32" selection-end-line="48" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1051,31 +1051,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nn.py">
+    <entry file="file:///usr/lib/python2.7/site-packages/speech_recognition/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="48" column="32" selection-start-line="48" selection-start-column="32" selection-end-line="48" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
+          <caret line="343" column="0" selection-start-line="343" selection-start-column="0" selection-end-line="343" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/emotionRecognition.py">
+    <entry file="file://$PROJECT_DIR$/speech.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="40" selection-start-line="8" selection-start-column="40" selection-end-line="8" selection-end-column="40" />
+          <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/voiceInput.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.7272727">
-          <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="217" column="26" selection-start-line="217" selection-start-column="26" selection-end-line="217" selection-end-column="26" />
           <folding>
             <element signature="e#0#16#0" expanded="true" />
-            <element signature="e#118#8617#0" expanded="false" />
             <element signature="e#146#161#0" expanded="false" />
             <element signature="e#200#2088#0" expanded="false" />
             <element signature="e#2122#2295#0" expanded="false" />
@@ -1091,13 +1088,11 @@
     <entry file="file://$PROJECT_DIR$/allFunction.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="389" column="0" selection-start-line="389" selection-start-column="0" selection-end-line="402" selection-end-column="14" />
+          <caret line="238" column="0" selection-start-line="157" selection-start-column="0" selection-end-line="238" selection-end-column="0" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
             <element signature="e#731#770#0" expanded="false" />
             <element signature="e#822#951#0" expanded="false" />
-            <element signature="e#1022#3805#0" expanded="false" />
-            <element signature="e#3850#4471#0" expanded="false" />
             <element signature="e#4698#4841#0" expanded="false" />
             <element signature="e#4863#4919#0" expanded="false" />
             <element signature="e#4969#5526#0" expanded="false" />
@@ -1105,7 +1100,6 @@
             <element signature="e#5933#6535#0" expanded="false" />
             <element signature="e#6585#6755#0" expanded="false" />
             <element signature="e#6811#7059#0" expanded="false" />
-            <element signature="e#7098#8290#0" expanded="false" />
             <element signature="e#8321#8438#0" expanded="false" />
             <element signature="e#8487#11016#0" expanded="false" />
             <element signature="e#11064#11496#0" expanded="false" />
@@ -1121,19 +1115,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/lib/python2.7/site-packages/speech_recognition/__init__.py">
+    <entry file="file://$PROJECT_DIR$/voiceFeature.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.77395576">
-          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="186" column="26" selection-start-line="186" selection-start-column="26" selection-end-line="186" selection-end-column="26" />
+          <folding>
+            <element signature="e#140#7331#0" expanded="false" />
+            <element signature="e#168#213#0" expanded="false" />
+            <element signature="e#249#388#0" expanded="false" />
+            <element signature="e#426#476#0" expanded="false" />
+            <element signature="e#543#1175#0" expanded="false" />
+            <element signature="e#1233#1624#0" expanded="false" />
+            <element signature="e#1690#2346#0" expanded="false" />
+            <element signature="e#2394#2593#0" expanded="false" />
+            <element signature="e#2644#2954#0" expanded="false" />
+            <element signature="e#3009#4387#0" expanded="false" />
+            <element signature="e#4435#4567#0" expanded="false" />
+            <element signature="e#4629#7331#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/speechRecognition.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.18427518">
-          <caret line="5" column="57" selection-start-line="5" selection-start-column="57" selection-end-line="5" selection-end-column="57" />
-          <folding />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="26" column="43" selection-start-line="26" selection-start-column="43" selection-end-line="26" selection-end-column="43" />
+          <folding>
+            <element signature="e#65#805#0" expanded="false" />
+            <element signature="e#93#200#0" expanded="false" />
+            <element signature="e#241#333#0" expanded="false" />
+            <element signature="e#375#446#0" expanded="false" />
+            <element signature="e#501#805#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/emotionRecognition.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33169532">
+          <caret line="9" column="42" selection-start-line="9" selection-start-column="42" selection-end-line="9" selection-end-column="42" />
+          <folding>
+            <element signature="e#0#17#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
