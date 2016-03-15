@@ -60,7 +60,7 @@ class VoiceInput():
 
             midTermBuffer = []
 
-    def stereo2mono(x):
+    def stereo2mono(self,x):
         if x.ndim==1:
             return x
         else:
@@ -69,7 +69,7 @@ class VoiceInput():
             else:
                 return -1
 
-    def normalizeFeatures(features):
+    def normalizeFeatures(self,features):
         X = np.array([],dtype=float)
 
         for count, f in enumerate(features):
@@ -94,10 +94,10 @@ class VoiceInput():
             featuresNorm.append(ft)
         return (featuresNorm, MEAN, STD)
 
-    def Energy(frame):
+    def Energy(self,frame):
         return np.sum(frame ** 2) / np.float64(len(frame))
 
-    def energyExtraction(x,Win, Step):
+    def energyExtraction(self,x,Win, Step):
         Win = int(Win)
         Step = int(Step)
 
@@ -134,7 +134,7 @@ class VoiceInput():
 
         return energyFeatures
 
-    def trainSVM(features, Cparam):
+    def trainSVM(self,features, Cparam):
         X = np.array([])
         Y = np.array([])
         for i, f in enumerate(features):
@@ -210,9 +210,9 @@ class VoiceInput():
             if s[1] - s[0] > minDuration:
                 segmentLimits2.append(s)
         segmentLimits = segmentLimits2"""
-        if plot==True:
+        """if plot==True:
             plotSegments(x, self.Fs, segmentLimits, ProbOnset)
-        #print "Segmentation;",segmentLimits
+        #print "Segmentation;",segmentLimits"""
         return segmentLimits,ProbOnset
 
 if __name__ == "__main__":

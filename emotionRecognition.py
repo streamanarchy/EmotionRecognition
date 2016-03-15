@@ -1,13 +1,14 @@
 import voiceInput
 import speechRecognition
 import voiceFeature
+import voiceEmotion
 
 class controlPanel():
     def __init__(self):
         self.voiceInput = voiceInput.VoiceInput()
         self.speechRecognition = speechRecognition.SpeechRecognition()
         self.voiceFeatures = voiceFeature.VoiceFeature()
-        self.voiceEmotion = voiceEmotion()
+        self.voiceEmotion = voiceEmotion.VoiceEmotion()
         self.wordEmotion = wordEmotion()
         self.emotionCoefficient = emotionCoefficient()
         self.emotionDatabase = emotionDatabase()

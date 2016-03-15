@@ -2,8 +2,8 @@ import numpy as np
 from scipy import optimize
 import pickle
 
-class neuralNet(object):
-	def __init__(self,weightFile = None):
+class NeuralNetwork(object):
+	def __init__(self,weightFile):
 		if weightFile == None:
 			self.inputLayerSize = 19
 			self.outputLayerSize = 7
@@ -13,7 +13,6 @@ class neuralNet(object):
 		else:
 			weightFileBuffer = open(weightFile,"r")
 			self = pickle.load(weightFileBuffer)
-			print self.W1
 
 	def forward(self,X):
 		self.z2 = np.dot(X, self.W1)
@@ -24,6 +23,7 @@ class neuralNet(object):
 
 	def sigmoid(self,dataVector):
 		return 1/(1+np.exp(-dataVector))
+
 	def sigmoidPrime(self,dataVector):
 		return np.exp(-dataVector)/((1+np.exp(-dataVector))**2)
 	def costFunction(self, X, y):
@@ -78,7 +78,7 @@ class neuralNet(object):
 		return numgrad"""
 
 
-class trainer(object):
+class Trainer(object):
 	def __init__(self, N):
 		self.N = N
 
@@ -106,4 +106,5 @@ class trainer(object):
 
 
 if __name__ == "__main__":
-	print "In the function"
+	#TODO add a call sequence for main call
+	print "It's a neural network. It always need data"
