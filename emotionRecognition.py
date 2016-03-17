@@ -2,6 +2,7 @@ import voiceInput
 import speechRecognition
 import voiceFeature
 import voiceEmotion
+import wordEmotion
 
 class controlPanel():
     def __init__(self):
@@ -9,10 +10,10 @@ class controlPanel():
         self.speechRecognition = speechRecognition.SpeechRecognition()
         self.voiceFeatures = voiceFeature.VoiceFeature()
         self.voiceEmotion = voiceEmotion.VoiceEmotion()
-        self.wordEmotion = wordEmotion()
-        self.emotionCoefficient = emotionCoefficient()
-        self.emotionDatabase = emotionDatabase()
-        self.wordDatabase = wordDatabase()
+        #self.wordEmotion = wordEmotion.WordEmotion()
+        #self.emotionCoefficient = emotionCoefficient()
+        #self.emotionDatabase = emotionDatabase()
+        #self.wordDatabase = wordDatabase()
 
     def display(self):
         #TODO call main interface here
@@ -20,11 +21,13 @@ class controlPanel():
             print("Select your options:\n1.Train and Test \n2.Input and Analyze\n3.Voice analysis\nInput:")
             optionInput = int(raw_input())
             if optionInput == 1:
-                train()
+                self.voiceEmotion.Training()
             if optionInput == 2:
-              main.control()
-            if optionInput == 3:
-                recordAudioSegments("",4)
+                x = self.voiceInput.voiceInput(6)
+                print x
+                feature = self.voiceFeatures.FeatureExtraction(x,x.shape[0],x.shape[0])
+                emotion = self.voiceEmotion.voiceEmotionRecognition(feature)
+                print emotion
 
 if __name__ == "__main__":
     controller = controlPanel()

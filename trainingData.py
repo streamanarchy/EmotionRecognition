@@ -6,12 +6,14 @@ from voiceInput import VoiceInput
 
 class Training():
     def __init__(self,neuralnetwork):
-        self.minList = []
-        self.maxList = []
+
+        self.maxlist = [-999,-999,-999,-999,-999,-999,-999,-999,-999,-999,-999,-999,-999,-999,-999,-999,-999,-999,-999]
+        self.minlist = [999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999]
         self.denom = []
         self.countlist = [0,0,0,0,0,0,0]
         self.Fs = 16000
         self.neuralnetwork = neuralnetwork
+        self.voicefeature = VoiceFeature()
 
     def emo_db_complete_processing(self,emotion='N'):
 
@@ -97,15 +99,15 @@ class Training():
         for trainWav in fileList:
             l,x = wavfile.read(trainWav)
 
-        features = VoiceFeature.FeatureExtraction(x,x.shape[0],x.shape[0])
+            features = self.voicefeature.FeatureExtraction(x,x.shape[0],x.shape[0])
 
-        features = features.T.tolist()
-        for i in xrange(0,features.__len__()):
-            for each in xrange(0,features[i].__len__()):
-                if self.maxlist[each] < features[i][each]:
-                    self.maxlist[each]=features[i][each]
-                elif self.minlist[each] > features[i][each]:
-                    self.minlist[each]=features[i][each]
+            features = features.T.tolist()
+            for i in xrange(0,features.__len__()):
+                for each in xrange(0,features[i].__len__()):
+                    if self.maxlist[each] < features[i][each]:
+                        self.maxlist[each]=features[i][each]
+                    elif self.minlist[each] > features[i][each]:
+                        self.minlist[each]=features[i][each]
 
         for x in xrange(0,self.maxlist.__len__()):
             self.denom.append(self.maxlist[x]-self.minlist[x])

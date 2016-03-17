@@ -45,10 +45,8 @@ class VoiceInput():
                 #midTermBufferArray = filtfilt(filtb , filta , midTermBufferArray)
                 #wavfile.write(curWavFileName, Fs, midTermBufferArray)
 
-                try:
-                    segmentsArray,ProbOnSet = self.audioSVMSegmentation(midTermBufferArray,self.Fs,0.05,0.05,plot = False)
-                except:
-                    continue
+                print midTermBufferArray
+                segmentsArray,ProbOnSet = self.audioSVMSegmentation(midTermBufferArray,0.05,0.05,plot = False)
 
                 x = np.array([])
                 for segments in segmentsArray:
@@ -57,15 +55,15 @@ class VoiceInput():
                         continue
                     else:
                         x = np.hstack((x,midTermBufferArray[segments[0]*self.Fs:segments[1]*self.Fs]))
-
-            midTermBuffer = []
+                return x
+            #midTermBuffer = []
 
     def stereo2mono(self,x):
         if x.ndim==1:
             return x
         else:
             if x.ndim==2:
-                return ( (x[:,1] / 2) + (x[:,0] / 2) )
+                return ( (x[:,1] / 2.0) + (x[:,0] / 2.0) )
             else:
                 return -1
 
@@ -148,6 +146,20 @@ class VoiceInput():
         svm.learn(X, Y)
         return svm
 
+    def smoothMovingAvg(self,inputSignal,windowLen):
+
+        if inputSignal.ndim != 1:
+            raise ValueError("")
+        if inputSignal.size < windowLen:
+            print windowLen, inputSignal
+            raise ValueError("Input vector needs to be bigger than window size.")
+        if windowLen < 3:
+            return inputSignal
+        s = np.r_[2*inputSignal[0] - inputSignal[windowLen-1::-1], inputSignal, 2*inputSignal[-1]-inputSignal[-1:-windowLen:-1]]
+        w = np.ones(windowLen, 'd')
+        y = np.convolve(w/w.sum(), s, mode='same')
+        return y[windowLen:-windowLen+1]
+
     def audioSVMSegmentation(self,x,window,steps,plot=False):
         smoothWindow=1
         Weight=0.3
@@ -174,8 +186,9 @@ class VoiceInput():
         for i in range(energy.shape[1]):                    # for each frame
             curFV = (energy[:, i] - MEANSS) / STDSS         # normalize feature vector
             #print curFV,ShortTermFeatures[:,i],MEANSS
-        ProbOnset.append(SVM.pred_probability(curFV)[1])           # get SVM probability (that it belongs to the ONSET class)
+            ProbOnset.append(SVM.pred_probability(curFV)[1])           # get SVM probability (that it belongs to the ONSET class)
         ProbOnset = np.array(ProbOnset)
+
         ProbOnset = self.smoothMovingAvg(ProbOnset, smoothWindow / steps)  # smooth probability
 
         #TODO Step 4: detect onset frame indices:

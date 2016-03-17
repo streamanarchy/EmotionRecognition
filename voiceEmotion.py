@@ -8,11 +8,12 @@ class VoiceEmotion():
         self.trainednetwork = trainingData.Training(self.neuralnetwork)
         
     def Training(self):
-        self.trainingdata.feature_normalisation()
+        self.trainednetwork.feature_normalisation()
         for key,value in self.emotionconversion.items():
             self.neuralnetwork = self.trainednetwork.emo_db_complete_processing(key)
 
     def voiceEmotionRecognition(self,x):
+        x = x.T
         y = self.neuralnetwork.forward(x)
         return y
 
