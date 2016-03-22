@@ -3,16 +3,19 @@ import numpy as np
 from scipy.io import wavfile
 from voiceFeature import VoiceFeature
 from voiceInput import VoiceInput
+from neuralNetwork import Trainer
 
 class Training():
     def __init__(self,neuralnetwork):
-
-        self.maxlist = [-999,-999,-999,-999,-999,-999,-999,-999,-999,-999,-999,-999,-999,-999,-999,-999,-999,-999,-999]
-        self.minlist = [999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999]
+        selfsuccess = 0
+        self.failure = 0
+        self.maxlist = [-999]*34
+        self.minlist = [999]*34
         self.denom = []
         self.countlist = [0,0,0,0,0,0,0]
-        self.Fs = 16000
+        self.Fs = 44100
         self.neuralnetwork = neuralnetwork
+        self.trainer = Trainer(self.neuralnetwork)
         self.voicefeature = VoiceFeature()
 
     def emo_db_complete_processing(self,emotion='N'):
@@ -89,8 +92,7 @@ class Training():
                 normalizedFeatures = []
                 for axis1 in xrange(0,features[axis0].__len__()):
                     normalizedFeatures.append((features[axis0][axis1]-self.minlist[axis1])/self.denom[axis1])
-
-                self.neuralnetwork.emoTrainer.train(normalizedFeatures,y)
+                self.trainer.train(normalizedFeatures,y)
 
         return self.neuralnetwork
 
@@ -112,8 +114,60 @@ class Training():
         for x in xrange(0,self.maxlist.__len__()):
             self.denom.append(self.maxlist[x]-self.minlist[x])
 
+    def test_emo_db_complete(self,emotion='N'):
+
+        fileaddress = "/home/project/Documents/Project/training/wav/"+emotion+"/*.wav"
+        fileList = glob.glob(fileaddress)
+
+        for trainWav in fileList:
+            l,xraw = wavfile.read(trainWav)
+            try:
+                segmentsArray,probOnSet = VoiceInput.audioSVMSegmentation(xraw,0.05,0.05,plot = False)
+            except:
+                continue
+
+            x = np.array([])
+            for segments in segmentsArray:
+                if x.shape<=0:
+                    x = xraw[segments[0]*self.Fs:segments[1]*self.Fs]
+                    continue
+                else:
+                    x = np.hstack((x,xraw[segments[0]*self.Fs:segments[1]*self.Fs]))
+
+            features = VoiceFeature.FeatureExtraction(x,x.shape[0],x.shape[0])
+            result = trainWav[-6]
+
+            if result == 'F':
+                y = [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+            elif result =='W':
+                y = [0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+            elif result =='A':
+                y = [0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0]
+            elif result =='L':
+                y = [0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0]
+            elif result =='E':
+                y = [0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0]
+            elif result =='T':
+                y = [0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0]
+            elif result =='N':
+                y = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0]
 
 
+            features = features.T.tolist()
+            for axis0 in xrange(0,features.__len__()):
+                normalizedFeatures = []
+                for axis1 in xrange(0,features[axis0].__len__()):
+                    normalizedFeatures.append((features[axis0][axis1]-self.minlist[axis1])/self.denom[axis1])
+                response = self.neuralnetwork.forward(normalizedFeatures)
+                ytest = response.index(max(response))
+                if y[ytest] == 1:
+                    self.success = self.success+1
+                else:
+                    self.failure = self.failure+1
+
+        print self.success, self.failure
+
+        return self.neuralnetwork
 
 if __name__ == "__main__":
     trainingdata = Training()

@@ -21,14 +21,15 @@ class controlPanel():
             print("Select your options:\n1.Train and Test \n2.Input and Analyze\n3.Voice analysis\nInput:")
             optionInput = int(raw_input())
             if optionInput == 1:
-                self.voiceEmotion.Training()
+                self.voiceEmotion.training()
             if optionInput == 2:
-                x = self.voiceInput.voiceInput(6)
+                x = self.voiceInput.voiceInput(4)
                 print x
                 feature = self.voiceFeatures.FeatureExtraction(x,x.shape[0],x.shape[0])
                 emotion = self.voiceEmotion.voiceEmotionRecognition(feature)
                 print emotion
-
+            if optionInput == 3:
+                self.voiceEmotion.testing()
 if __name__ == "__main__":
     controller = controlPanel()
     controller.display()

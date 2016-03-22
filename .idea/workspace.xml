@@ -4,10 +4,11 @@
     <list default="true" id="72c015bb-bf35-409c-8888-1ee8f3d2222f" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/csvRead.py" afterPath="$PROJECT_DIR$/csvRead.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/csvRead2.py" afterPath="$PROJECT_DIR$/csvRead2.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/emotionRecognition.py" afterPath="$PROJECT_DIR$/emotionRecognition.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/neuralNetwork.py" afterPath="$PROJECT_DIR$/neuralNetwork.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/trainingData.py" afterPath="$PROJECT_DIR$/trainingData.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voiceEmotion.py" afterPath="$PROJECT_DIR$/voiceEmotion.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voiceFeature.py" afterPath="$PROJECT_DIR$/voiceFeature.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voiceInput.py" afterPath="$PROJECT_DIR$/voiceInput.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wordEmotion.py" afterPath="$PROJECT_DIR$/wordEmotion.py" />
     </list>
@@ -30,112 +31,26 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="allFunction.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/allFunction.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="404" column="37" selection-start-line="404" selection-start-column="37" selection-end-line="404" selection-end-column="37" />
-              <folding>
-                <element signature="e#0#10#0" expanded="true" />
-                <element signature="e#731#770#0" expanded="false" />
-                <element signature="e#822#951#0" expanded="false" />
-                <element signature="e#3850#4471#0" expanded="false" />
-                <element signature="e#4509#4679#0" expanded="false" />
-                <element signature="e#4698#4841#0" expanded="false" />
-                <element signature="e#4863#4919#0" expanded="false" />
-                <element signature="e#4969#5526#0" expanded="false" />
-                <element signature="e#5567#5884#0" expanded="false" />
-                <element signature="e#5933#6535#0" expanded="false" />
-                <element signature="e#6585#6755#0" expanded="false" />
-                <element signature="e#6811#7059#0" expanded="false" />
-                <element signature="e#7098#8290#0" expanded="false" />
-                <element signature="e#8321#8438#0" expanded="false" />
-                <element signature="e#8487#11016#0" expanded="false" />
-                <element signature="e#11064#11496#0" expanded="false" />
-                <element signature="e#11519#11629#0" expanded="false" />
-                <element signature="e#11665#12191#0" expanded="false" />
-                <element signature="e#12226#12606#0" expanded="false" />
-                <element signature="e#12647#13890#0" expanded="false" />
-                <element signature="e#17566#17984#0" expanded="false" />
-                <element signature="e#18005#18011#0" expanded="false" />
-                <element signature="e#18027#21742#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="voiceInput.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/voiceInput.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="162" column="0" selection-start-line="162" selection-start-column="0" selection-end-line="162" selection-end-column="0" />
-              <folding>
-                <element signature="e#200#2068#0" expanded="false" />
-                <element signature="e#2107#2284#0" expanded="false" />
-                <element signature="e#2336#3021#0" expanded="false" />
-                <element signature="e#3059#3109#0" expanded="false" />
-                <element signature="e#3163#4657#0" expanded="false" />
-                <element signature="e#4708#5147#0" expanded="false" />
-                <element signature="e#5211#5747#0" expanded="false" />
-                <element signature="e#5819#9237#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="voiceFeature.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/voiceFeature.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.39473686">
-              <caret line="69" column="0" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
-              <folding>
-                <element signature="e#168#213#0" expanded="false" />
-                <element signature="e#249#388#0" expanded="false" />
-                <element signature="e#426#476#0" expanded="false" />
-                <element signature="e#543#1175#0" expanded="false" />
-                <element signature="e#1233#1624#0" expanded="false" />
-                <element signature="e#1690#2346#0" expanded="false" />
-                <element signature="e#2394#2593#0" expanded="false" />
-                <element signature="e#2644#2954#0" expanded="false" />
-                <element signature="e#3009#4387#0" expanded="false" />
-                <element signature="e#4435#4567#0" expanded="false" />
-                <element signature="e#4629#7331#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="emotionRecognition.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/emotionRecognition.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="24" column="32" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="32" />
-              <folding>
-                <element signature="e#0#17#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="neuralNetwork.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/neuralNetwork.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-              <folding />
+              <caret line="25" column="33" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="33" />
+              <folding>
+                <element signature="e#124#463#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="trainingData.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="trainingData.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/trainingData.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="111" column="8" selection-start-line="111" selection-start-column="8" selection-end-line="111" selection-end-column="8" />
+            <state vertical-scroll-proportion="5.19084">
+              <caret line="167" column="40" selection-start-line="167" selection-start-column="40" selection-end-line="167" selection-end-column="40" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
-                <element signature="e#198#585#0" expanded="false" />
-                <element signature="e#650#3385#0" expanded="false" />
+                <element signature="e#3391#4148#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -145,10 +60,52 @@
         <entry file="file://$PROJECT_DIR$/voiceEmotion.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="15" column="1" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
+              <caret line="16" column="22" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="csvRead.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/csvRead.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="18" column="23" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="voiceFeature.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/voiceFeature.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="138" column="56" selection-start-line="138" selection-start-column="56" selection-end-line="138" selection-end-column="56" />
               <folding>
-                <element signature="e#0#20#0" expanded="true" />
+                <element signature="e#0#18#0" expanded="true" />
+                <element signature="e#169#214#0" expanded="false" />
+                <element signature="e#250#389#0" expanded="false" />
+                <element signature="e#427#477#0" expanded="false" />
+                <element signature="e#544#1176#0" expanded="false" />
+                <element signature="e#1234#1625#0" expanded="false" />
+                <element signature="e#1691#2347#0" expanded="false" />
+                <element signature="e#2395#2594#0" expanded="false" />
+                <element signature="e#2645#2955#0" expanded="false" />
+                <element signature="e#2995#4038#0" expanded="false" />
+                <element signature="e#5189#6567#0" expanded="false" />
+                <element signature="e#6615#6747#0" expanded="false" />
+                <element signature="e#6809#10113#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="emotionRecognition.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/emotionRecognition.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="28" column="56" selection-start-line="28" selection-start-column="56" selection-end-line="28" selection-end-column="56" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -176,17 +133,18 @@
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/plotting.py" />
         <option value="$PROJECT_DIR$/allFunction.py" />
-        <option value="$PROJECT_DIR$/voiceFeature.py" />
         <option value="$PROJECT_DIR$/nn.py" />
-        <option value="$PROJECT_DIR$/neuralNetwork.py" />
         <option value="$PROJECT_DIR$/csvRead2.py" />
-        <option value="$PROJECT_DIR$/csvRead.py" />
         <option value="$PROJECT_DIR$/speechRecognition.py" />
-        <option value="$PROJECT_DIR$/wordEmotion.py" />
-        <option value="$PROJECT_DIR$/trainingData.py" />
-        <option value="$PROJECT_DIR$/emotionRecognition.py" />
         <option value="$PROJECT_DIR$/voiceInput.py" />
+        <option value="$PROJECT_DIR$/csvsplit.py" />
+        <option value="$PROJECT_DIR$/wordEmotion.py" />
+        <option value="$PROJECT_DIR$/csvRead.py" />
+        <option value="$PROJECT_DIR$/voiceFeature.py" />
+        <option value="$PROJECT_DIR$/emotionRecognition.py" />
         <option value="$PROJECT_DIR$/voiceEmotion.py" />
+        <option value="$PROJECT_DIR$/neuralNetwork.py" />
+        <option value="$PROJECT_DIR$/trainingData.py" />
       </list>
     </option>
   </component>
@@ -220,8 +178,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -246,11 +202,29 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="full.screen.before.presentation.mode" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="88" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="103" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="109" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="1012" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="88" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="103" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="109" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="1012" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -258,57 +232,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Python.emotionRecognition">
-    <configuration default="false" name="allFunction" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Code" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/allFunction.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="plotting" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Code" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/plotting.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="voiceInput" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Code" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/voiceInput.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
     <configuration default="false" name="speechRecognition" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -339,6 +262,57 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Code" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/emotionRecognition.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="csvRead" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Code" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/csvRead.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="csvsplit" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Code" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/csvsplit.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="csvRead2" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Code" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/csvRead2.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -466,19 +440,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.allFunction" />
-      <item index="1" class="java.lang.String" itemvalue="Python.plotting" />
-      <item index="2" class="java.lang.String" itemvalue="Python.voiceInput" />
-      <item index="3" class="java.lang.String" itemvalue="Python.speechRecognition" />
-      <item index="4" class="java.lang.String" itemvalue="Python.emotionRecognition" />
+      <item index="0" class="java.lang.String" itemvalue="Python.speechRecognition" />
+      <item index="1" class="java.lang.String" itemvalue="Python.emotionRecognition" />
+      <item index="2" class="java.lang.String" itemvalue="Python.csvRead" />
+      <item index="3" class="java.lang.String" itemvalue="Python.csvsplit" />
+      <item index="4" class="java.lang.String" itemvalue="Python.csvRead2" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.emotionRecognition" />
-        <item index="1" class="java.lang.String" itemvalue="Python.speechRecognition" />
-        <item index="2" class="java.lang.String" itemvalue="Python.allFunction" />
-        <item index="3" class="java.lang.String" itemvalue="Python.voiceInput" />
-        <item index="4" class="java.lang.String" itemvalue="Python.plotting" />
+        <item index="1" class="java.lang.String" itemvalue="Python.csvRead" />
+        <item index="2" class="java.lang.String" itemvalue="Python.csvRead2" />
+        <item index="3" class="java.lang.String" itemvalue="Python.csvsplit" />
+        <item index="4" class="java.lang.String" itemvalue="Python.speechRecognition" />
       </list>
     </recent_temporary>
   </component>
@@ -506,15 +480,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1366" height="741" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24888226" sideWeight="0.49202734" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24888226" sideWeight="0.49202734" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32890365" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32890365" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29401994" sideWeight="0.50298065" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32890365" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32890365" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2707641" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29401994" sideWeight="0.49701938" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962743" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286052" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24888226" sideWeight="0.50797266" order="2" side_tool="true" content_ui="tabs" />
@@ -524,6 +497,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32890365" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -559,19 +533,64 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="8" />
+      <option name="time" value="13" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/allFunction.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#10#0" expanded="false" />
+            <element signature="e#731#770#0" expanded="false" />
+            <element signature="e#822#951#0" expanded="false" />
+            <element signature="e#3850#4471#0" expanded="false" />
+            <element signature="e#4509#4679#0" expanded="false" />
+            <element signature="e#4698#4841#0" expanded="false" />
+            <element signature="e#4863#4919#0" expanded="false" />
+            <element signature="e#4969#5526#0" expanded="false" />
+            <element signature="e#5567#5884#0" expanded="false" />
+            <element signature="e#5933#6535#0" expanded="false" />
+            <element signature="e#6585#6755#0" expanded="false" />
+            <element signature="e#6811#7059#0" expanded="false" />
+            <element signature="e#7098#8290#0" expanded="false" />
+            <element signature="e#8321#8438#0" expanded="false" />
+            <element signature="e#8487#11016#0" expanded="false" />
+            <element signature="e#11064#11496#0" expanded="false" />
+            <element signature="e#11519#11629#0" expanded="false" />
+            <element signature="e#11665#12191#0" expanded="false" />
+            <element signature="e#12226#12606#0" expanded="false" />
+            <element signature="e#12647#13890#0" expanded="false" />
+            <element signature="e#17566#17984#0" expanded="false" />
+            <element signature="e#18005#18011#0" expanded="false" />
+            <element signature="e#18027#21742#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/voiceInput.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="162" column="0" selection-start-line="162" selection-start-column="0" selection-end-line="162" selection-end-column="0" />
+          <folding>
+            <element signature="e#200#2068#0" expanded="false" />
+            <element signature="e#2107#2284#0" expanded="false" />
+            <element signature="e#2336#3021#0" expanded="false" />
+            <element signature="e#3059#3109#0" expanded="false" />
+            <element signature="e#3163#4657#0" expanded="false" />
+            <element signature="e#4708#5147#0" expanded="false" />
+            <element signature="e#5211#5747#0" expanded="false" />
+            <element signature="e#5819#9237#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/speechRecognition.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="26" column="43" selection-start-line="26" selection-start-column="43" selection-end-line="26" selection-end-column="43" />
-          <folding>
-            <element signature="e#93#200#0" expanded="false" />
-            <element signature="e#241#333#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -580,7 +599,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="9" column="42" selection-start-line="9" selection-start-column="42" selection-end-line="9" selection-end-column="42" />
           <folding>
-            <element signature="e#0#17#0" expanded="true" />
+            <element signature="e#0#17#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -590,9 +609,11 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#10#0" expanded="true" />
+            <element signature="e#0#10#0" expanded="false" />
             <element signature="e#731#770#0" expanded="false" />
             <element signature="e#822#951#0" expanded="false" />
+            <element signature="e#3850#4471#0" expanded="false" />
+            <element signature="e#4509#4679#0" expanded="false" />
             <element signature="e#4698#4841#0" expanded="false" />
             <element signature="e#4863#4919#0" expanded="false" />
             <element signature="e#4969#5526#0" expanded="false" />
@@ -600,6 +621,7 @@
             <element signature="e#5933#6535#0" expanded="false" />
             <element signature="e#6585#6755#0" expanded="false" />
             <element signature="e#6811#7059#0" expanded="false" />
+            <element signature="e#7098#8290#0" expanded="false" />
             <element signature="e#8321#8438#0" expanded="false" />
             <element signature="e#8487#11016#0" expanded="false" />
             <element signature="e#11064#11496#0" expanded="false" />
@@ -607,9 +629,9 @@
             <element signature="e#11665#12191#0" expanded="false" />
             <element signature="e#12226#12606#0" expanded="false" />
             <element signature="e#12647#13890#0" expanded="false" />
-            <element signature="e#13948#17512#0" expanded="false" />
             <element signature="e#17566#17984#0" expanded="false" />
             <element signature="e#18005#18011#0" expanded="false" />
+            <element signature="e#18027#21742#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -633,9 +655,11 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="127" column="18" selection-start-line="127" selection-start-column="18" selection-end-line="127" selection-end-column="18" />
           <folding>
-            <element signature="e#0#10#0" expanded="true" />
+            <element signature="e#0#10#0" expanded="false" />
             <element signature="e#731#770#0" expanded="false" />
             <element signature="e#822#951#0" expanded="false" />
+            <element signature="e#3850#4471#0" expanded="false" />
+            <element signature="e#4509#4679#0" expanded="false" />
             <element signature="e#4698#4841#0" expanded="false" />
             <element signature="e#4863#4919#0" expanded="false" />
             <element signature="e#4969#5526#0" expanded="false" />
@@ -643,6 +667,7 @@
             <element signature="e#5933#6535#0" expanded="false" />
             <element signature="e#6585#6755#0" expanded="false" />
             <element signature="e#6811#7059#0" expanded="false" />
+            <element signature="e#7098#8290#0" expanded="false" />
             <element signature="e#8321#8438#0" expanded="false" />
             <element signature="e#8487#11016#0" expanded="false" />
             <element signature="e#11064#11496#0" expanded="false" />
@@ -650,9 +675,9 @@
             <element signature="e#11665#12191#0" expanded="false" />
             <element signature="e#12226#12606#0" expanded="false" />
             <element signature="e#12647#13890#0" expanded="false" />
-            <element signature="e#13948#17512#0" expanded="false" />
             <element signature="e#17566#17984#0" expanded="false" />
             <element signature="e#18005#18011#0" expanded="false" />
+            <element signature="e#18027#21742#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -662,9 +687,11 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#10#0" expanded="true" />
+            <element signature="e#0#10#0" expanded="false" />
             <element signature="e#731#770#0" expanded="false" />
             <element signature="e#822#951#0" expanded="false" />
+            <element signature="e#3850#4471#0" expanded="false" />
+            <element signature="e#4509#4679#0" expanded="false" />
             <element signature="e#4698#4841#0" expanded="false" />
             <element signature="e#4863#4919#0" expanded="false" />
             <element signature="e#4969#5526#0" expanded="false" />
@@ -672,6 +699,7 @@
             <element signature="e#5933#6535#0" expanded="false" />
             <element signature="e#6585#6755#0" expanded="false" />
             <element signature="e#6811#7059#0" expanded="false" />
+            <element signature="e#7098#8290#0" expanded="false" />
             <element signature="e#8321#8438#0" expanded="false" />
             <element signature="e#8487#11016#0" expanded="false" />
             <element signature="e#11064#11496#0" expanded="false" />
@@ -679,9 +707,9 @@
             <element signature="e#11665#12191#0" expanded="false" />
             <element signature="e#12226#12606#0" expanded="false" />
             <element signature="e#12647#13890#0" expanded="false" />
-            <element signature="e#13948#17512#0" expanded="false" />
             <element signature="e#17566#17984#0" expanded="false" />
             <element signature="e#18005#18011#0" expanded="false" />
+            <element signature="e#18027#21742#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -691,9 +719,11 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="521" column="58" selection-start-line="521" selection-start-column="58" selection-end-line="521" selection-end-column="58" />
           <folding>
-            <element signature="e#0#10#0" expanded="true" />
+            <element signature="e#0#10#0" expanded="false" />
             <element signature="e#731#770#0" expanded="false" />
             <element signature="e#822#951#0" expanded="false" />
+            <element signature="e#3850#4471#0" expanded="false" />
+            <element signature="e#4509#4679#0" expanded="false" />
             <element signature="e#4698#4841#0" expanded="false" />
             <element signature="e#4863#4919#0" expanded="false" />
             <element signature="e#4969#5526#0" expanded="false" />
@@ -701,6 +731,7 @@
             <element signature="e#5933#6535#0" expanded="false" />
             <element signature="e#6585#6755#0" expanded="false" />
             <element signature="e#6811#7059#0" expanded="false" />
+            <element signature="e#7098#8290#0" expanded="false" />
             <element signature="e#8321#8438#0" expanded="false" />
             <element signature="e#8487#11016#0" expanded="false" />
             <element signature="e#11064#11496#0" expanded="false" />
@@ -708,9 +739,9 @@
             <element signature="e#11665#12191#0" expanded="false" />
             <element signature="e#12226#12606#0" expanded="false" />
             <element signature="e#12647#13890#0" expanded="false" />
-            <element signature="e#13948#17512#0" expanded="false" />
             <element signature="e#17566#17984#0" expanded="false" />
             <element signature="e#18005#18011#0" expanded="false" />
+            <element signature="e#18027#21742#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -743,64 +774,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/csvRead2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#10#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/csvRead.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="34" column="43" selection-start-line="34" selection-start-column="43" selection-end-line="34" selection-end-column="43" />
-          <folding>
-            <element signature="e#0#10#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/speechRecognition.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="2" column="23" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
-          <folding>
-            <element signature="e#93#200#0" expanded="false" />
-            <element signature="e#241#333#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wordEmotion.py">
+    <entry file="file:///usr/lib/python2.7/site-packages/neo4jrestclient/query.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.18427518">
-          <caret line="5" column="50" selection-start-line="5" selection-start-column="50" selection-end-line="5" selection-end-column="50" />
+        <state vertical-scroll-proportion="15.847666">
+          <caret line="840" column="0" selection-start-line="840" selection-start-column="0" selection-end-line="840" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/trainingData.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="111" column="8" selection-start-line="111" selection-start-column="8" selection-end-line="111" selection-end-column="8" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-            <element signature="e#198#585#0" expanded="false" />
-            <element signature="e#650#3385#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/emotionRecognition.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="24" column="32" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#17#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -809,7 +794,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="404" column="37" selection-start-line="404" selection-start-column="37" selection-end-line="404" selection-end-column="37" />
           <folding>
-            <element signature="e#0#10#0" expanded="true" />
             <element signature="e#731#770#0" expanded="false" />
             <element signature="e#822#951#0" expanded="false" />
             <element signature="e#3850#4471#0" expanded="false" />
@@ -831,33 +815,30 @@
             <element signature="e#12647#13890#0" expanded="false" />
             <element signature="e#17566#17984#0" expanded="false" />
             <element signature="e#18005#18011#0" expanded="false" />
-            <element signature="e#18027#21742#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/neuralNetwork.py">
+    <entry file="file://$PROJECT_DIR$/csvRead2.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <caret line="5" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/voiceEmotion.py">
+    <entry file="file://$PROJECT_DIR$/wordEmotion.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="1" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/voiceInput.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="162" column="0" selection-start-line="162" selection-start-column="0" selection-end-line="162" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.15267175">
+          <caret line="8" column="21" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
           <folding>
             <element signature="e#200#2068#0" expanded="false" />
             <element signature="e#2107#2284#0" expanded="false" />
@@ -871,22 +852,69 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/csvRead.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="23" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/neuralNetwork.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="25" column="33" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="33" />
+          <folding>
+            <element signature="e#124#463#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/voiceFeature.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.39473686">
-          <caret line="69" column="0" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="138" column="56" selection-start-line="138" selection-start-column="56" selection-end-line="138" selection-end-column="56" />
           <folding>
-            <element signature="e#168#213#0" expanded="false" />
-            <element signature="e#249#388#0" expanded="false" />
-            <element signature="e#426#476#0" expanded="false" />
-            <element signature="e#543#1175#0" expanded="false" />
-            <element signature="e#1233#1624#0" expanded="false" />
-            <element signature="e#1690#2346#0" expanded="false" />
-            <element signature="e#2394#2593#0" expanded="false" />
-            <element signature="e#2644#2954#0" expanded="false" />
-            <element signature="e#3009#4387#0" expanded="false" />
-            <element signature="e#4435#4567#0" expanded="false" />
-            <element signature="e#4629#7331#0" expanded="false" />
+            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#169#214#0" expanded="false" />
+            <element signature="e#250#389#0" expanded="false" />
+            <element signature="e#427#477#0" expanded="false" />
+            <element signature="e#544#1176#0" expanded="false" />
+            <element signature="e#1234#1625#0" expanded="false" />
+            <element signature="e#1691#2347#0" expanded="false" />
+            <element signature="e#2395#2594#0" expanded="false" />
+            <element signature="e#2645#2955#0" expanded="false" />
+            <element signature="e#2995#4038#0" expanded="false" />
+            <element signature="e#5189#6567#0" expanded="false" />
+            <element signature="e#6615#6747#0" expanded="false" />
+            <element signature="e#6809#10113#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/emotionRecognition.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="28" column="56" selection-start-line="28" selection-start-column="56" selection-end-line="28" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/voiceEmotion.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="22" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/trainingData.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="5.19084">
+          <caret line="167" column="40" selection-start-line="167" selection-start-column="40" selection-end-line="167" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#3391#4148#0" expanded="false" />
           </folding>
         </state>
       </provider>

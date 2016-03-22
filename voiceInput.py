@@ -6,7 +6,7 @@ import mlpy
 
 class VoiceInput():
     def __init__(self):
-        self.Fs = 16000
+        self.Fs = 44100
 
     def voiceInput(self,Bs):
         inp = alsaaudio.PCM(alsaaudio.PCM_CAPTURE,alsaaudio.PCM_NONBLOCK)

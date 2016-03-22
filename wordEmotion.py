@@ -9,6 +9,7 @@ class WordEmotion():
         #TODO add word emotion configuration  #Main control for this class
 
 
+
         return
 
     def wordRelationalSignificance(self):

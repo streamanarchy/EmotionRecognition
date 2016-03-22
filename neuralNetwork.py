@@ -5,9 +5,9 @@ import pickle
 class NeuralNetwork(object):
 	def __init__(self,weightFile):
 		if weightFile == None:
-			self.inputLayerSize = 19
+			self.inputLayerSize = 34
 			self.outputLayerSize = 7
-			self.hiddenLayerSize = 13
+			self.hiddenLayerSize = 20
 			self.W1 = np.random.rand(self.inputLayerSize,self.hiddenLayerSize)
 			self.W2 = np.random.rand(self.hiddenLayerSize,self.outputLayerSize)
 		else:
@@ -19,6 +19,12 @@ class NeuralNetwork(object):
 		self.a2 = self.sigmoid(self.z2)
 		self.z3 = np.dot(self.a2, self.W2)
 		yHat = self.sigmoid(self.z3)
+		print yHat
+		for x in xrange(0,yHat[0].__len__()):
+			if yHat[0][x] <= 0.7:
+				yHat[0][x] = 0.0
+			elif yHat[0][x] > 0.7:
+				yHat[0][x] = 1.0
 		return yHat
 
 	def sigmoid(self,dataVector):
@@ -26,10 +32,12 @@ class NeuralNetwork(object):
 
 	def sigmoidPrime(self,dataVector):
 		return np.exp(-dataVector)/((1+np.exp(-dataVector))**2)
+
 	def costFunction(self, X, y):
 		self.yHat = self.forward(X)
 		J = 0.5*sum((y-self.yHat)**2)
 		return J
+
 	def costFunctionPrime(self, X, y):
 		self.yHat = self.forward(X)
 		delta3 = np.multiply(-(y-self.yHat), self.sigmoidPrime(self.z3))
@@ -77,7 +85,6 @@ class NeuralNetwork(object):
 
 		return numgrad"""
 
-
 class Trainer(object):
 	def __init__(self, N):
 		self.N = N
@@ -98,12 +105,11 @@ class Trainer(object):
 
 		self.J = []
 		params0 = self.N.getParams()
-		options = {'maxiter':1,'disp' : True}
+		options = {'maxiter':100,'disp' : True}
 		res = optimize.minimize(self.costFunctionWrapper, params0, jac=True, method='BFGS', args=(X, y), options=options, callback=self.callbackF)
 
 		self.N.setParams(res.x)
 		self.optimizationResults = res
-
 
 if __name__ == "__main__":
 	#TODO add a call sequence for main call

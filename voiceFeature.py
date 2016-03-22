@@ -3,9 +3,10 @@ from voiceInput import VoiceInput
 from scipy.fftpack import fft
 from scipy.fftpack import dct
 
+
 class VoiceFeature():
     def __init__(self):
-        self.Fs = 16000
+        self.Fs = 44100
         self.eps = 0.00000001
 
     def ZCR(self, frame):
@@ -87,6 +88,84 @@ class VoiceFeature():
             sRO = 0.0
         return (sRO)
 
+    def Harmonic(self,frame):
+        M = np.round(0.016 * self.Fs) - 1
+        R = np.correlate(frame, frame, mode='full')
+
+        g = R[len(frame)-1]
+        R = R[len(frame):-1]
+
+
+        [a, ] = np.nonzero(np.diff(np.sign(R)))
+
+        if len(a) == 0:
+            m0 = len(R)-1
+        else:
+            m0 = a[0]
+        if M > len(R):
+            M = len(R) - 1
+
+        Gamma = np.zeros((M), dtype=np.float64)
+        CSum = np.cumsum(frame ** 2)
+        Gamma[m0:M] = R[m0:M] / (np.sqrt((g * CSum[M:m0:-1])) + self.eps)
+
+        ZCR = self.ZCR(Gamma)
+
+        if ZCR > 0.15:
+            HR = 0.0
+            f0 = 0.0
+        else:
+            if len(Gamma) == 0:
+                HR = 1.0
+                blag = 0.0
+                Gamma = np.zeros((M), dtype=np.float64)
+            else:
+                HR = np.max(Gamma)
+                blag = np.argmax(Gamma)
+
+        # Get fundamental frequency:
+            f0 = self.Fs / (blag + self.eps)
+            if f0 > 5000:
+                f0 = 0.0
+            if HR < 0.1:
+                f0 = 0.0
+
+        return (HR, f0)
+
+    def ChromaFeaturesInit(self,nfft, fs):
+        freqs = np.array([((f + 1) * fs) / (2 * nfft) for f in range(nfft)])
+        Cp = 27.50
+
+        nChroma = np.round(12.0 * np.log2(freqs+self.eps / Cp)).astype(int)
+
+
+        nFreqsPerChroma = np.zeros((nChroma.shape[0], ))
+
+        uChroma = np.unique(nChroma)
+
+        for u in uChroma:
+            idx = np.nonzero(nChroma == u)
+            nFreqsPerChroma[idx] = idx[0].shape
+        return nChroma, nFreqsPerChroma
+
+    def ChromaFeatures(self, X, fs, nChroma, nFreqsPerChroma):
+
+        chromaNames = ['A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#']
+        spec = X**2
+        C = np.zeros((nChroma.shape[0],))
+        print nChroma.shape,spec.shape
+        C[nChroma] = spec
+        C /= nFreqsPerChroma[nChroma]
+        finalC = np.zeros((12, 1))
+        newD = int(np.ceil(C.shape[0] / 12.0) * 12)
+        C2 = np.zeros((newD, ))
+        C2[0:C.shape[0]] = C
+        C2 = C2.reshape(C2.shape[0]/12, 12)
+        finalC = np.matrix(np.sum(C2, axis=0)).T
+        finalC /= spec.sum()
+
+        return chromaNames, finalC
+
     def mfccInitFilterBanks(self, fs, nfft):
         # filter bank params:
         lowfreq = 133.33
@@ -148,12 +227,14 @@ class VoiceFeature():
         nFFT = Win / 2
 
         [fbank, freqs] = self.mfccInitFilterBanks(self.Fs, nFFT)                # compute the triangular filter banks used in the mfcc calculation
+        nChroma, nFreqsPerChroma = self.ChromaFeaturesInit(nFFT, self.Fs)
 
         numOfTimeSpectralFeatures = 6
-        #numOfHarmonicFeatures = 0
+        numOfHarmonicFeatures = 2
+        numOfChromaFeatures = 13
         nceps = 13  #MFCC features
         #TODO IGR of harmonic features
-        totalNumOfFeatures = numOfTimeSpectralFeatures + nceps #+numOfHarmonicFeatures
+        totalNumOfFeatures = numOfTimeSpectralFeatures + nceps +numOfHarmonicFeatures +numOfChromaFeatures
         Features = np.array([], dtype=np.float64)
 
         while (curPos + Win - 1 < N):                        # for each short-term window until the end of signal
@@ -174,8 +255,12 @@ class VoiceFeature():
             #curFV[5] = self.SpectralEntropy(X)                  # spectral entropy
             #curFV[6] = self.SpectralFlux(X, Xprev)              # spectral flux
             curFV[5] = self.SpectralRollOff(X, 0.90, self.Fs)        # spectral rolloff
-            curFV[numOfTimeSpectralFeatures:numOfTimeSpectralFeatures+nceps, 0] = self.MFCC(X, fbank, nceps).copy()    # MFCCs
+            curFV[6] ,curFV [7] = self.Harmonic(x)
+            curFV[numOfTimeSpectralFeatures+numOfHarmonicFeatures:numOfTimeSpectralFeatures+numOfHarmonicFeatures+nceps, 0] = self.MFCC(X, fbank, nceps).copy()    # MFCCs
             #curFV[numOfTimeSpectralFeatures:numOfTimeSpectralFeatures+nceps, 0] = MFCC(X, nwin = 2048, nfft = 2048)[0].T.copy()
+            chromaNames, chromaF = self.ChromaFeatures(X, self.Fs, nChroma, nFreqsPerChroma)
+            curFV[numOfTimeSpectralFeatures + nceps +numOfHarmonicFeatures: numOfTimeSpectralFeatures + numOfHarmonicFeatures +nceps + numOfChromaFeatures - 1] = chromaF
+            curFV[numOfTimeSpectralFeatures + nceps + numOfHarmonicFeatures + numOfChromaFeatures -1] = chromaF.std()
             if countFrames == 1:
                 Features = curFV                                        # initialize feature matrix (if fir frame)
             else:
