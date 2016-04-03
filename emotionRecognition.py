@@ -15,6 +15,13 @@ class controlPanel():
         #self.emotionDatabase = emotionDatabase()
         #self.wordDatabase = wordDatabase()
 
+    def recognize(self):
+        x = self.voiceInput.voiceInput(5)
+        feature = self.voiceFeatures.FeatureExtraction(x,x.shape[0],x.shape[0])
+        emotionvoice = self.voiceEmotion.voiceEmotionRecognition(feature)
+        return emotionvoice
+
+
     def display(self):
         #TODO call main interface here
         while 1:
@@ -30,6 +37,7 @@ class controlPanel():
                 print emotion
             if optionInput == 3:
                 self.voiceEmotion.testing()
+
 if __name__ == "__main__":
     controller = controlPanel()
     controller.display()

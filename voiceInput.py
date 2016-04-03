@@ -6,7 +6,7 @@ import mlpy
 
 class VoiceInput():
     def __init__(self):
-        self.Fs = 44100
+        self.Fs = 16000
 
     def voiceInput(self,Bs):
         inp = alsaaudio.PCM(alsaaudio.PCM_CAPTURE,alsaaudio.PCM_NONBLOCK)
@@ -46,7 +46,7 @@ class VoiceInput():
                 #wavfile.write(curWavFileName, Fs, midTermBufferArray)
 
                 print midTermBufferArray
-                segmentsArray,ProbOnSet = self.audioSVMSegmentation(midTermBufferArray,0.05,0.05,plot = False)
+                segmentsArray,ProbOnSet = self.audioSVMSegmentation(midTermBufferArray,0.02,0.02,plot = False)
 
                 x = np.array([])
                 for segments in segmentsArray:
@@ -63,7 +63,7 @@ class VoiceInput():
             return x
         else:
             if x.ndim==2:
-                return ( (x[:,1] / 2.0) + (x[:,0] / 2.0) )
+                return ( (x[:,1] / 2) + (x[:,0] / 2) )
             else:
                 return -1
 
@@ -122,6 +122,7 @@ class VoiceInput():
                 Xprev = X.copy()                             # keep previous fft mag
             curFV = np.zeros((2, 1))
             curFV[0] = countFrames
+            print countFrames
             curFV[1] = self.Energy(x)                          # short-term energy
             if countFrames == 1:
                 energyFeatures = curFV                                        # initialize feature matrix (if fir frame)
@@ -186,6 +187,9 @@ class VoiceInput():
         for i in range(energy.shape[1]):                    # for each frame
             curFV = (energy[:, i] - MEANSS) / STDSS         # normalize feature vector
             #print curFV,ShortTermFeatures[:,i],MEANSS
+            print curFV[1]
+            print SVM.pred_probability(curFV)
+
             ProbOnset.append(SVM.pred_probability(curFV)[1])           # get SVM probability (that it belongs to the ONSET class)
         ProbOnset = np.array(ProbOnset)
 

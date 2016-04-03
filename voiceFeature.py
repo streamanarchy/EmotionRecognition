@@ -6,7 +6,7 @@ from scipy.fftpack import dct
 
 class VoiceFeature():
     def __init__(self):
-        self.Fs = 44100
+        self.Fs = 16000
         self.eps = 0.00000001
 
     def ZCR(self, frame):
@@ -153,7 +153,6 @@ class VoiceFeature():
         chromaNames = ['A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#']
         spec = X**2
         C = np.zeros((nChroma.shape[0],))
-        print nChroma.shape,spec.shape
         C[nChroma] = spec
         C /= nFreqsPerChroma[nChroma]
         finalC = np.zeros((12, 1))
@@ -229,12 +228,12 @@ class VoiceFeature():
         [fbank, freqs] = self.mfccInitFilterBanks(self.Fs, nFFT)                # compute the triangular filter banks used in the mfcc calculation
         nChroma, nFreqsPerChroma = self.ChromaFeaturesInit(nFFT, self.Fs)
 
-        numOfTimeSpectralFeatures = 6
-        numOfHarmonicFeatures = 2
-        numOfChromaFeatures = 13
+        numOfTimeSpectralFeatures = 0
+        numOfHarmonicFeatures = 0
+        numOfChromaFeatures = 0
         nceps = 13  #MFCC features
         #TODO IGR of harmonic features
-        totalNumOfFeatures = numOfTimeSpectralFeatures + nceps +numOfHarmonicFeatures +numOfChromaFeatures
+        totalNumOfFeatures = numOfTimeSpectralFeatures + nceps +numOfHarmonicFeatures #+numOfChromaFeatures
         Features = np.array([], dtype=np.float64)
 
         while (curPos + Win - 1 < N):                        # for each short-term window until the end of signal
@@ -248,19 +247,19 @@ class VoiceFeature():
                 Xprev = X.copy()                             # keep previous fft mag
 
             curFV = np.zeros((totalNumOfFeatures, 1))
-            curFV[0] = self.ZCR(x)                              # zero crossing rate
-            curFV[1] = self.Energy(x)                           # short-term energy
-            curFV[2] = self.EnergyEntropy(x)                    # short-term entropy of energy
-            [curFV[3], curFV[4]] = self.SpectralCentroidAndSpread(X, self.Fs)    # spectral centroid and spread
+            #curFV[0] = self.ZCR(x)                              # zero crossing rate
+            #curFV[1] = self.Energy(x)                           # short-term energy
+            #curFV[2] = self.EnergyEntropy(x)                    # short-term entropy of energy
+            #[curFV[3], curFV[4]] = self.SpectralCentroidAndSpread(X, self.Fs)    # spectral centroid and spread
             #curFV[5] = self.SpectralEntropy(X)                  # spectral entropy
             #curFV[6] = self.SpectralFlux(X, Xprev)              # spectral flux
-            curFV[5] = self.SpectralRollOff(X, 0.90, self.Fs)        # spectral rolloff
-            curFV[6] ,curFV [7] = self.Harmonic(x)
+            #curFV[5] = self.SpectralRollOff(X, 0.90, self.Fs)        # spectral rolloff
+            #curFV[6] ,curFV [7] = self.Harmonic(x)
             curFV[numOfTimeSpectralFeatures+numOfHarmonicFeatures:numOfTimeSpectralFeatures+numOfHarmonicFeatures+nceps, 0] = self.MFCC(X, fbank, nceps).copy()    # MFCCs
             #curFV[numOfTimeSpectralFeatures:numOfTimeSpectralFeatures+nceps, 0] = MFCC(X, nwin = 2048, nfft = 2048)[0].T.copy()
-            chromaNames, chromaF = self.ChromaFeatures(X, self.Fs, nChroma, nFreqsPerChroma)
-            curFV[numOfTimeSpectralFeatures + nceps +numOfHarmonicFeatures: numOfTimeSpectralFeatures + numOfHarmonicFeatures +nceps + numOfChromaFeatures - 1] = chromaF
-            curFV[numOfTimeSpectralFeatures + nceps + numOfHarmonicFeatures + numOfChromaFeatures -1] = chromaF.std()
+            #chromaNames, chromaF = self.ChromaFeatures(X, self.Fs, nChroma, nFreqsPerChroma)
+            #curFV[numOfTimeSpectralFeatures + nceps +numOfHarmonicFeatures: numOfTimeSpectralFeatures + numOfHarmonicFeatures +nceps + numOfChromaFeatures - 1] = chromaF
+            #curFV[numOfTimeSpectralFeatures + nceps + numOfHarmonicFeatures + numOfChromaFeatures -1] = chromaF.std()
             if countFrames == 1:
                 Features = curFV                                        # initialize feature matrix (if fir frame)
             else:

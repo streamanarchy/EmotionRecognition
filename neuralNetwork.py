@@ -3,13 +3,15 @@ from scipy import optimize
 import pickle
 
 class NeuralNetwork(object):
-	def __init__(self,weightFile):
+	def __init__(self,weightFile=None):
 		if weightFile == None:
-			self.inputLayerSize = 34
-			self.outputLayerSize = 7
-			self.hiddenLayerSize = 20
+			self.Lambda = 0.0001
+			self.inputLayerSize = 13
+			self.outputLayerSize = 1
+			self.hiddenLayerSize = 9
 			self.W1 = np.random.rand(self.inputLayerSize,self.hiddenLayerSize)
 			self.W2 = np.random.rand(self.hiddenLayerSize,self.outputLayerSize)
+			self.count = 0
 		else:
 			weightFileBuffer = open(weightFile,"r")
 			self = pickle.load(weightFileBuffer)
@@ -17,14 +19,16 @@ class NeuralNetwork(object):
 	def forward(self,X):
 		self.z2 = np.dot(X, self.W1)
 		self.a2 = self.sigmoid(self.z2)
+
+
 		self.z3 = np.dot(self.a2, self.W2)
 		yHat = self.sigmoid(self.z3)
 		print yHat
-		for x in xrange(0,yHat[0].__len__()):
-			if yHat[0][x] <= 0.7:
-				yHat[0][x] = 0.0
-			elif yHat[0][x] > 0.7:
-				yHat[0][x] = 1.0
+		"""if yHat[0] <= 0.7:
+			yHat[0] = 0.0
+		else:
+			yHat[0]=1.0"""
+
 		return yHat
 
 	def sigmoid(self,dataVector):
@@ -35,7 +39,8 @@ class NeuralNetwork(object):
 
 	def costFunction(self, X, y):
 		self.yHat = self.forward(X)
-		J = 0.5*sum((y-self.yHat)**2)
+
+		J = 0.5*sum((y-self.yHat)**2) #/X.__len__() + (self.Lambda/2)*(sum(self.W1**2)+sum(self.W2**2))
 		return J
 
 	def costFunctionPrime(self, X, y):
@@ -43,10 +48,10 @@ class NeuralNetwork(object):
 		delta3 = np.multiply(-(y-self.yHat), self.sigmoidPrime(self.z3))
 		self.a2 = (self.a2)[np.newaxis]
 		delta3 = (delta3)[np.newaxis]
-		dJdW2 = np.dot(self.a2.T, delta3)
+		dJdW2 = np.dot(self.a2.T, delta3) #+ self.Lambda*self.W2
 
 		delta2 = np.dot(delta3, self.W2.T)*self.sigmoidPrime(self.z2)
-		dJdW1 = np.dot(np.array(X)[np.newaxis].T, delta2)
+		dJdW1 = np.dot(np.array(X)[np.newaxis].T, delta2) #+self.Lambda*self.W1
 
 		return dJdW1, dJdW2
 
@@ -100,16 +105,36 @@ class Trainer(object):
 		return cost, grad
 
 	def train(self, X, y):
+		"""if y == 0.0:
+			self.N.count += 1
+			print self.N.count
+			if self.N.count  >= 150:
+				print "count reached"
+				return self.N"""
 		self.X = X
 		self.y = y
 
 		self.J = []
-		params0 = self.N.getParams()
-		options = {'maxiter':100,'disp' : True}
-		res = optimize.minimize(self.costFunctionWrapper, params0, jac=True, method='BFGS', args=(X, y), options=options, callback=self.callbackF)
+		dJdW1 , dJdW2 = self.N.costFunctionPrime(self.X,self.y)
 
-		self.N.setParams(res.x)
-		self.optimizationResults = res
+		self.N.W1 = self.N.W1 - 0.4*dJdW1
+		self.N.W2 = self.N.W2 - 0.4*dJdW2
+
+		"""if y-self.N.yHat[0] < 0:
+			self.N.W1 = self.N.W1 - 0.1*dJdW1
+			self.N.W2 = self.N.W2 - 0.1*dJdW2
+		else:
+			self.N.W1 = self.N.W1 + 0.1*dJdW1
+			self.N.W2 = self.N.W2 + 0.1*dJdW2"""
+
+		#params0 = self.N.getParams()
+		#options = {'maxiter':300,'disp' : True}
+		#res = optimize.minimize(self.costFunctionWrapper, params0, jac=True, method='BFGS', args=(X, y), options=options, callback=self.callbackF)
+
+		#self.N.setParams(res.x)
+		#self.optimizationResults = res
+
+		return self.N
 
 if __name__ == "__main__":
 	#TODO add a call sequence for main call

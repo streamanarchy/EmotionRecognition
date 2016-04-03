@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title>
+            Let's get it done byttchh
+        </title>
+        {%load static %}
+        <script type="text/javascript" src="{% static 'js/dygraph-combined-dev.js'%}"></script>
+    </head>
+    <body>
+        <div id="center">
+
+
+        </div>
+    </body>
+    <script type="text/javascript">
+        console.log(new Date());
+        var plotemotion = [[10],[20]];
+        {% for key,value in emotion.items %}
+        console.log({{value}});
+         plotemotion[0].push({{value}});
+         plotemotion[1].push({{value}});
+        {% endfor %}
+        console.log({{emotion.Anxiety}});
+        Graph = new Dygraph(document.getElementById("center"),plotemotion,{});
+    </script>
+</html>
