@@ -5,12 +5,14 @@
         </title>
         {%load static %}
         <script type="text/javascript" src="{% static 'js/dygraph-combined-dev.js'%}"></script>
+        <script type="text/javascript" src="{% static 'js/jquery-1.12.2.min.js'%}"></script>
     </head>
     <body>
         <div id="center">
 
 
         </div>
+        <div id="center2"></div>
     </body>
     <script type="text/javascript">
         console.log(new Date());
@@ -20,7 +22,16 @@
          plotemotion[0].push({{value}});
          plotemotion[1].push({{value}});
         {% endfor %}
-        console.log({{emotion.Anxiety}});
         Graph = new Dygraph(document.getElementById("center"),plotemotion,{});
+
+        function getEmotion(){
+        $.ajax({url:"/replot", type:"get", success:function(response){
+        console.log(response);
+        document.getElementById("center2").innerHTML = {{emotion.Anger}}+1111;
+
+        }
+        });}
+        setInterval(getEmotion,6000);
+
     </script>
 </html>

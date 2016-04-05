@@ -3,6 +3,7 @@ import speechRecognition
 import voiceFeature
 import voiceEmotion
 import wordEmotion
+import threading
 
 class controlPanel():
     def __init__(self):
@@ -10,17 +11,33 @@ class controlPanel():
         self.speechRecognition = speechRecognition.SpeechRecognition()
         self.voiceFeatures = voiceFeature.VoiceFeature()
         self.voiceEmotion = voiceEmotion.VoiceEmotion()
-        #self.wordEmotion = wordEmotion.WordEmotion()
+        self.wordEmotion = wordEmotion.WordEmotion()
+        self.voiceemotioncoefficient = []
+        self.speechemotioncoefficient = []
         #self.emotionCoefficient = emotionCoefficient()
         #self.emotionDatabase = emotionDatabase()
         #self.wordDatabase = wordDatabase()
 
     def recognize(self):
+        voicethread = threading.Thread(name='voicethread',target=self.voice)
+        #speechthread = threading.Thread(name='speechthread',target=self.speech)
+        voicethread.start()
+        #speechthread.start()
+        voicethread.join()
+        #speechthread.join(6)
+        emotionvoice = self.threadnormalisation()
+        return self.voiceemotioncoefficient
+
+    def voice(self):
         x = self.voiceInput.voiceInput(5)
         feature = self.voiceFeatures.FeatureExtraction(x,x.shape[0],x.shape[0])
-        emotionvoice = self.voiceEmotion.voiceEmotionRecognition(feature)
-        return emotionvoice
+        self.voiceemotioncoefficient = self.voiceEmotion.voiceEmotionRecognition(feature)
 
+    def speech(self):
+        self.speechemotioncoefficient = self.wordEmotion.wordEmotionRecognition()
+
+    def threadnormalisation(self):
+        return 0
 
     def display(self):
         #TODO call main interface here

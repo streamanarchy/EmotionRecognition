@@ -16,6 +16,6 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
-urlpatterns = [url(r'^emoRecog/',include('emoRecog.urls')),
+urlpatterns = [url(r'^',include('emoRecog.urls')),
     url(r'^admin/', admin.site.urls),
 ]

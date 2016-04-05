@@ -26,7 +26,7 @@ class SpeechRecognition(object):
 
 if __name__ == "__main__":
     speechRecognitionEnglish = SpeechRecognition()
-    speechRecognitionEnglish.noiseAdjustment()
+    #speechRecognitionEnglish.noiseAdjustment()
     speechRecognitionEnglish.backgroundListen()
     while 1:
         pass

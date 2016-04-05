@@ -12,25 +12,20 @@ class WordEmotion():
         self.vectorize = pickle.load(self.learnfile)
         self.learnfile.close()
 
-    def wordEmotionRecognition(self,source):
-        #TODO add word emotion configuration  #Main control for this class
-        audio = self.speechrecognizer.listen(source)
-        try:
-            speechText = self.speechrecognizer.recognize_google(audio)
-            print speechText
-            speechTextList = [speechText]
-            speechTextTrain = self.vectorize.transform(speechTextList)
-            print self.classifier.predict(speechTextTrain)
-        except speech_recognition.UnknownValueError:
-            print "Can't understand"
-        except speech_recognition.RequestError:
-            print "Can't Connect"
-
-
-    def speechSource(self):
+    def wordEmotionRecognition(self):
         with speech_recognition.Microphone() as source:
-            while 1:
-                self.wordEmotionRecognition(source)
+            #TODO add word emotion configuration  #Main control for this class
+            audio = self.speechrecognizer.listen(source)
+            try:
+                speechText = self.speechrecognizer.recognize_google(audio)
+                print speechText
+                speechTextList = [speechText]
+                speechTextTrain = self.vectorize.transform(speechTextList)
+                return self.classifier.predict(speechTextTrain)
+            except speech_recognition.UnknownValueError:
+                return -1
+            except speech_recognition.RequestError:
+                return -2
 
     def wordRelationalSignificance(self):
         #TODO use twitter database for this
@@ -49,4 +44,4 @@ class WordEmotion():
 
 if __name__=="__main__":
     wordemotion = WordEmotion()
-    wordemotion.speechSource()
+    wordemotion.wordEmotionRecognition()
