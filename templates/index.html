@@ -23,11 +23,21 @@
          plotemotion[1].push({{value}});
         {% endfor %}
         Graph = new Dygraph(document.getElementById("center"),plotemotion,{});
-
+        var count = 0;
+        var emotionplot = [];
         function getEmotion(){
         $.ajax({url:"/replot", type:"get", success:function(response){
-        console.log(response);
-        document.getElementById("center2").innerHTML = {{emotion.Anger}}+1111;
+        console.log(response['emotion'])
+        count+=6;
+        var emotionlist = [count];
+        for(var key in response['emotion']){
+        emotionlist.push(response['emotion'][key]);
+
+        }
+        emotionplot.push(emotionlist);
+        console.log(emotionlist);
+        Graph.updateOptions({'file':emotionplot});
+        //console.log(response);;
 
         }
         });}

@@ -2,21 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="72c015bb-bf35-409c-8888-1ee8f3d2222f" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/newneural.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/newtrainingData.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/js/dygraph-combined-dev.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/js/dygraph-combined.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/webframe/emoRecog/tests.py" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/emotionRecognition.py" afterPath="$PROJECT_DIR$/emotionRecognition.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/speechRecognition.py" afterPath="$PROJECT_DIR$/speechRecognition.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/index.html" afterPath="$PROJECT_DIR$/templates/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/text.learn" afterPath="$PROJECT_DIR$/text.learn" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voiceEmotion.py" afterPath="$PROJECT_DIR$/voiceEmotion.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webframe/emoRecog/urls.py" afterPath="$PROJECT_DIR$/webframe/emoRecog/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webframe/emoRecog/views.py" afterPath="$PROJECT_DIR$/webframe/emoRecog/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webframe/webframe/urls.py" afterPath="$PROJECT_DIR$/webframe/webframe/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wordEmotion.py" afterPath="$PROJECT_DIR$/wordEmotion.py" />
     </list>
     <ignored path="Code.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -94,8 +80,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.73170733">
-              <caret line="33" column="37" selection-start-line="33" selection-start-column="37" selection-end-line="33" selection-end-column="37" />
+            <state vertical-scroll-proportion="0.796748">
+              <caret line="36" column="38" selection-start-line="36" selection-start-column="38" selection-end-line="36" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -984,8 +970,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.73170733">
-          <caret line="33" column="37" selection-start-line="33" selection-start-column="37" selection-end-line="33" selection-end-column="37" />
+        <state vertical-scroll-proportion="0.796748">
+          <caret line="36" column="38" selection-start-line="36" selection-start-column="38" selection-end-line="36" selection-end-column="38" />
           <folding />
         </state>
       </provider>
