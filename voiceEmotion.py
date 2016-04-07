@@ -15,6 +15,7 @@ class VoiceEmotion():
         self.emotionlist = []
         self.filebuffer = open("emotion.normal","wb")
 
+
         #self.trainer = neuralNetwork.Trainer(self.neuralnetwork)
         self.emotionconversion = {'W':['Anger'],'L':['Boredom'],'E':['Disgust'],'A':['Anxiety'],'F':['Happiness'],'T':['Sadness'],'N':['Neutral']}
         self.trainednetwork = trainingData.Training(self.neuralnetwork)
@@ -31,11 +32,14 @@ class VoiceEmotion():
     def voiceEmotionRecognition(self,x):
         x = x.T
         emotion = {}
+        voicenormal = open("voice.normal","rb")
+        self.avgarray = pickle.load(voicenormal)
+        voicenormal.close()
         for netemo,net in self.neuralnetwork.items():
             y = net.forward(x)
             emotion[self.emotionconversion[netemo][0]] = y[0][0]
 
-        return emotion
+        return emotion,self.avgarray
 
     def testing(self):
         #self.trainednetwork.feature_normalisation()

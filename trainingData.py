@@ -5,7 +5,7 @@ from voiceFeature import VoiceFeature
 from voiceInput import VoiceInput
 from neuralNetwork import Trainer
 from sklearn import preprocessing as pr
-import matplotlib.pyplot as plt
+import pickle
 
 class Training():
     def __init__(self,neuralnetwork):
@@ -26,6 +26,7 @@ class Training():
         self.trainer['T'] = Trainer(self.neuralnetwork['T'])
         self.trainer['N'] = Trainer(self.neuralnetwork['N'])
         self.voicefeature = VoiceFeature()
+        self.emolist = []
         self.voiceinput  = VoiceInput()
 
     def emo_db_complete_processing(self,feature_train,emotion='N'):
@@ -212,12 +213,18 @@ class Training():
                 for axis1 in xrange(0,features[axis0].__len__()):
                     normalizedFeatures.append((features[axis0][axis1]-self.minlist[axis1])/self.denom[axis1])"""
             response = []
+            emo = []
             for res,neural in self.neuralnetwork.items():
-                response.append([neural.forward(self.features_train[fileindex]),result,res])
+                emotioncalculated = neural.forward(self.features_train[fileindex])
+                emo.append(emotioncalculated[0])
+                response.append([emotioncalculated,result,res])
 
                 #response.index(max(response))
+            self.emolist.append(emo)
             print response
-
+        emofile = open("emotion.normal","wb")
+        pickle.dump(self.emolist,emofile)
+        emofile.close()
         #print self.success, self.failure
         return self.neuralnetwork
 

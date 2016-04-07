@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="72c015bb-bf35-409c-8888-1ee8f3d2222f" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/emotionRecognition.py" afterPath="$PROJECT_DIR$/emotionRecognition.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/index.html" afterPath="$PROJECT_DIR$/templates/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/trainingData.py" afterPath="$PROJECT_DIR$/trainingData.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voiceEmotion.py" afterPath="$PROJECT_DIR$/voiceEmotion.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webframe/emoRecog/views.py" afterPath="$PROJECT_DIR$/webframe/emoRecog/views.py" />
     </list>
     <ignored path="Code.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,7 +32,17 @@
         <entry file="file://$PROJECT_DIR$/emotionRecognition.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="28" column="43" selection-start-line="28" selection-start-column="43" selection-end-line="28" selection-end-column="43" />
+              <caret line="28" column="87" selection-start-line="28" selection-start-column="87" selection-end-line="28" selection-end-column="87" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="voiceEmotion.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/voiceEmotion.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="36" column="27" selection-start-line="36" selection-start-column="27" selection-end-line="36" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -45,11 +60,33 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.5934959">
+              <caret line="37" column="32" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="normal.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/normal.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#13#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webframe/emoRecog/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="16" column="27" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
+              <caret line="18" column="77" selection-start-line="18" selection-start-column="77" selection-end-line="18" selection-end-column="77" />
               <folding>
                 <element signature="e#0#47#0" expanded="true" />
               </folding>
@@ -57,31 +94,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webframe/webframe/urls.py">
+      <file leaf-file-name="wordEmotion.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/wordEmotion.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webframe/emoRecog/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="3" column="30" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/templates/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.796748">
-              <caret line="36" column="38" selection-start-line="36" selection-start-column="38" selection-end-line="36" selection-end-column="38" />
+              <caret line="14" column="35" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -119,17 +136,19 @@
         <option value="$PROJECT_DIR$/newtrainingData.py" />
         <option value="$PROJECT_DIR$/webframe/emoRecog/templates/index.html" />
         <option value="$PROJECT_DIR$/testhtml.py" />
-        <option value="$PROJECT_DIR$/trainingData.py" />
         <option value="$PROJECT_DIR$/voiceFeature.py" />
         <option value="$PROJECT_DIR$/neuralNetwork.py" />
         <option value="$PROJECT_DIR$/csvRead3.py" />
         <option value="$PROJECT_DIR$/speechRecognition.py" />
         <option value="$PROJECT_DIR$/wordEmotion.py" />
-        <option value="$PROJECT_DIR$/voiceEmotion.py" />
         <option value="$PROJECT_DIR$/webframe/emoRecog/urls.py" />
         <option value="$PROJECT_DIR$/webframe/webframe/urls.py" />
-        <option value="$PROJECT_DIR$/webframe/emoRecog/views.py" />
+        <option value="$PROJECT_DIR$/templates/normal.py" />
+        <option value="$PROJECT_DIR$/trainingData.py" />
+        <option value="$PROJECT_DIR$/normal.py" />
+        <option value="$PROJECT_DIR$/voiceEmotion.py" />
         <option value="$PROJECT_DIR$/emotionRecognition.py" />
+        <option value="$PROJECT_DIR$/webframe/emoRecog/views.py" />
         <option value="$PROJECT_DIR$/templates/index.html" />
       </list>
     </option>
@@ -241,11 +260,14 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.csvRead3">
+  <component name="RunManager" selected="Python.normal">
     <configuration default="false" name="emotionRecognition" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -259,23 +281,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Code" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/emotionRecognition.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="views" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/webframe/emoRecog" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Code" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/webframe/emoRecog/views.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -327,6 +332,23 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Code" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/speechRecognition.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="normal" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Code" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/normal.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -455,18 +477,18 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.emotionRecognition" />
-      <item index="1" class="java.lang.String" itemvalue="Python.views" />
-      <item index="2" class="java.lang.String" itemvalue="Python.csvRead3" />
-      <item index="3" class="java.lang.String" itemvalue="Python.wordEmotion" />
-      <item index="4" class="java.lang.String" itemvalue="Python.speechRecognition" />
+      <item index="1" class="java.lang.String" itemvalue="Python.csvRead3" />
+      <item index="2" class="java.lang.String" itemvalue="Python.wordEmotion" />
+      <item index="3" class="java.lang.String" itemvalue="Python.speechRecognition" />
+      <item index="4" class="java.lang.String" itemvalue="Python.normal" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.csvRead3" />
-        <item index="1" class="java.lang.String" itemvalue="Python.wordEmotion" />
-        <item index="2" class="java.lang.String" itemvalue="Python.speechRecognition" />
-        <item index="3" class="java.lang.String" itemvalue="Python.emotionRecognition" />
-        <item index="4" class="java.lang.String" itemvalue="Python.views" />
+        <item index="0" class="java.lang.String" itemvalue="Python.normal" />
+        <item index="1" class="java.lang.String" itemvalue="Python.emotionRecognition" />
+        <item index="2" class="java.lang.String" itemvalue="Python.csvRead3" />
+        <item index="3" class="java.lang.String" itemvalue="Python.wordEmotion" />
+        <item index="4" class="java.lang.String" itemvalue="Python.speechRecognition" />
       </list>
     </recent_temporary>
   </component>
@@ -572,12 +594,12 @@
           <caret line="20" column="8" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
-            <marker date="1459011441576" expanded="false" signature="1393:1965" placeholder="..." />
-            <marker date="1459011441576" expanded="false" signature="2065:3591" placeholder="..." />
-            <marker date="1459011441576" expanded="false" signature="3605:4395" placeholder="..." />
-            <marker date="1459011441576" expanded="true" signature="5966:6480" placeholder="..." />
-            <marker date="1459011441576" expanded="false" signature="6920:7322" placeholder="..." />
-            <marker date="1459011441576" expanded="false" signature="7468:8095" placeholder="..." />
+            <marker date="1460001455495" expanded="false" signature="1401:1973" placeholder="..." />
+            <marker date="1460001455495" expanded="false" signature="2073:3599" placeholder="..." />
+            <marker date="1460001455495" expanded="false" signature="3613:4403" placeholder="..." />
+            <marker date="1460001455495" expanded="true" signature="5974:6488" placeholder="..." />
+            <marker date="1460001455495" expanded="false" signature="6928:7330" placeholder="..." />
+            <marker date="1460001455495" expanded="false" signature="7476:8103" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -634,12 +656,12 @@
           <caret line="26" column="38" selection-start-line="26" selection-start-column="38" selection-end-line="26" selection-end-column="38" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
-            <marker date="1459011441576" expanded="false" signature="1393:1965" placeholder="..." />
-            <marker date="1459011441576" expanded="false" signature="2065:3591" placeholder="..." />
-            <marker date="1459011441576" expanded="false" signature="3605:4395" placeholder="..." />
-            <marker date="1459011441576" expanded="true" signature="5966:6480" placeholder="..." />
-            <marker date="1459011441576" expanded="false" signature="6920:7322" placeholder="..." />
-            <marker date="1459011441576" expanded="false" signature="7468:8095" placeholder="..." />
+            <marker date="1460001455495" expanded="false" signature="1401:1973" placeholder="..." />
+            <marker date="1460001455495" expanded="false" signature="2073:3599" placeholder="..." />
+            <marker date="1460001455495" expanded="false" signature="3613:4403" placeholder="..." />
+            <marker date="1460001455495" expanded="true" signature="5974:6488" placeholder="..." />
+            <marker date="1460001455495" expanded="false" signature="6928:7330" placeholder="..." />
+            <marker date="1460001455495" expanded="false" signature="7476:8103" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -801,6 +823,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33169532">
           <caret line="907" column="0" selection-start-line="907" selection-start-column="0" selection-end-line="907" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -833,45 +856,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/trainingData.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.03816794">
-          <caret line="20" column="8" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-            <marker date="1459011441576" expanded="false" signature="1393:1965" placeholder="..." />
-            <marker date="1459011441576" expanded="false" signature="2065:3591" placeholder="..." />
-            <marker date="1459011441576" expanded="false" signature="3605:4395" placeholder="..." />
-            <marker date="1459011441576" expanded="true" signature="5966:6480" placeholder="..." />
-            <marker date="1459011441576" expanded="false" signature="6920:7322" placeholder="..." />
-            <marker date="1459011441576" expanded="false" signature="7468:8095" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/speechRecognition.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="28" column="5" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/voiceEmotion.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/csvRead3.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="22" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -891,30 +880,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/emotionRecognition.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="28" column="43" selection-start-line="28" selection-start-column="43" selection-end-line="28" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/neuralNetwork.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="119" column="35" selection-start-line="119" selection-start-column="35" selection-end-line="119" selection-end-column="35" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wordEmotion.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="35" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -958,20 +929,88 @@
         </state>
       </provider>
     </entry>
+    <entry file="file:///usr/lib64/python2.7/pickle.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="202" column="0" selection-start-line="202" selection-start-column="0" selection-end-line="202" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/trainingData.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="224" column="43" selection-start-line="224" selection-start-column="43" selection-end-line="224" selection-end-column="43" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+            <marker date="1460001455495" expanded="false" signature="1401:1973" placeholder="..." />
+            <marker date="1460001455495" expanded="false" signature="2073:3599" placeholder="..." />
+            <marker date="1460001455495" expanded="false" signature="3613:4403" placeholder="..." />
+            <marker date="1460001455495" expanded="true" signature="5974:6488" placeholder="..." />
+            <marker date="1460001455495" expanded="false" signature="6928:7330" placeholder="..." />
+            <marker date="1460001455495" expanded="false" signature="7476:8103" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/normal.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/emotionRecognition.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="28" column="87" selection-start-line="28" selection-start-column="87" selection-end-line="28" selection-end-column="87" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/voiceEmotion.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="36" column="27" selection-start-line="36" selection-start-column="27" selection-end-line="36" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wordEmotion.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="35" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/webframe/emoRecog/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="27" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
+          <caret line="18" column="77" selection-start-line="18" selection-start-column="77" selection-end-line="18" selection-end-column="77" />
           <folding>
             <element signature="e#0#47#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/csvRead3.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="22" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.796748">
-          <caret line="36" column="38" selection-start-line="36" selection-start-column="38" selection-end-line="36" selection-end-column="38" />
+        <state vertical-scroll-proportion="0.5934959">
+          <caret line="37" column="32" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="32" />
           <folding />
         </state>
       </provider>

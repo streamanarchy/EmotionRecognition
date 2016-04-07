@@ -14,30 +14,28 @@ class controlPanel():
         self.wordEmotion = wordEmotion.WordEmotion()
         self.voiceemotioncoefficient = []
         self.speechemotioncoefficient = []
+
         #self.emotionCoefficient = emotionCoefficient()
         #self.emotionDatabase = emotionDatabase()
         #self.wordDatabase = wordDatabase()
 
     def recognize(self):
         voicethread = threading.Thread(name='voicethread',target=self.voice)
-        #speechthread = threading.Thread(name='speechthread',target=self.speech)
+        speechthread = threading.Thread(name='speechthread',target=self.speech)
         voicethread.start()
-        #speechthread.start()
+        speechthread.start()
         voicethread.join()
-        #speechthread.join(6)
-        emotionvoice = self.threadnormalisation()
-        return self.voiceemotioncoefficient
+        speechthread.join(8)
+        return self.voiceemotioncoefficient,self.avgarray,self.speechemotioncoefficient
 
     def voice(self):
-        x = self.voiceInput.voiceInput(5)
+        x = self.voiceInput.voiceInput(6)
         feature = self.voiceFeatures.FeatureExtraction(x,x.shape[0],x.shape[0])
-        self.voiceemotioncoefficient = self.voiceEmotion.voiceEmotionRecognition(feature)
+        self.voiceemotioncoefficient,self.avgarray = self.voiceEmotion.voiceEmotionRecognition(feature)
 
     def speech(self):
         self.speechemotioncoefficient = self.wordEmotion.wordEmotionRecognition()
 
-    def threadnormalisation(self):
-        return 0
 
     def display(self):
         #TODO call main interface here
@@ -54,6 +52,8 @@ class controlPanel():
                 print emotion
             if optionInput == 3:
                 self.voiceEmotion.testing()
+            if optionInput == 4:
+                exit()
 
 if __name__ == "__main__":
     controller = controlPanel()

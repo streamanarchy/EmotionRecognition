@@ -12,7 +12,7 @@
 
 
         </div>
-        <div id="center2"></div>
+        <div id="center2">Y1:Anxiety , Y2:Sadness, Y3:Neutral, Y4:Boredom, Y5:Disgust, Y6:Anger, Y7:Happiness</div>
     </body>
     <script type="text/javascript">
         console.log(new Date());
@@ -29,13 +29,50 @@
         $.ajax({url:"/replot", type:"get", success:function(response){
         console.log(response['emotion'])
         count+=6;
+
         var emotionlist = [count];
         for(var key in response['emotion']){
         emotionlist.push(response['emotion'][key]);
 
         }
+        //console.log(response);
+
+        avgemotion = response['avgarray'];
+        console.log(avgemotion);
+        for(var i=0;i<emotionlist.length-1;i++){
+        emotionlist[i+1]-=avgemotion[i]*5;
+        }
+        console.log(emotionlist)
+        var sumemotion=0;
+        for(var j=1;j<emotionlist.length;j++){
+        sumemotion+=emotionlist[j];
+        }
+        console.log(sumemotion);
+        for(var i=0;i<emotionlist.length-1;i++){
+        emotionlist[i+1]/=sumemotion;
+
+        }
+        mode = response['mode'];
+        max = Math.max(emotionlist);
+        if(parseInt(mode) == 0){
+        emotionlist[2]+=max*0.8;
+        emotionlist[3]+=max*0.8;
+        }
+        else if(parseInt(mode)==1){
+        emotionlist[0]+=max*0.8;
+        emotionlist[6]+=max*0.8;
+        }
+        else if(parseInt(mode)==2){
+        emotionlist[1]+=max*0.8;
+        emotionlist[4]+=max*0.8;
+        emotionlist[5]+=max*0.8;
+        }
         emotionplot.push(emotionlist);
-        console.log(emotionlist);
+        if (emotionplot.length >= 8){
+        emotionplot.shift();
+        }
+
+        //console.log(emotionlist);
         Graph.updateOptions({'file':emotionplot});
         //console.log(response);;
 
